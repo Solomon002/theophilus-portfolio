@@ -1,7 +1,5 @@
 <!doctype html>
-
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,48 +8,40 @@
     name="description"
     content="Portrait, editorial and commercial photography by Theophillus Atansuyi, based in Lagos, Nigeria."
   >
-
   <title>Theophillus Atansuyi — Photographer & Visual Storyteller</title>
-
-  <link rel="preload" as="image" href="./profile.jpeg" fetchpriority="high">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
-    rel="stylesheet"
-  >
 
   <style>
     :root {
       --paper: #ece9e6;
-      --paper-2: #f4f1ee;
-      --ink: #282623;
-      --muted: #706a64;
-      --taupe: #a48160;
-      --slate: #abb2ba;
-      --slate-soft: #d9dce0;
-      --line: #d3cbc3;
-      --white: #fffdfa;
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'DM Sans', Arial, sans-serif;
-      --wide: 1320px;
-      --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-      --dots-space: 58px;
+      --ink: #171514;
+      --muted: #706a65;
+      --line: rgba(23, 21, 20, 0.14);
+      --accent: #b66a42;
+      --white: #ffffff;
+      --wide: 1400px;
+      --sans: Arial, Helvetica, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --dots-space: 54px;
     }
 
     * {
       box-sizing: border-box;
+      min-width: 0;
     }
 
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 88px;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     body {
       margin: 0;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
       background: var(--paper);
       color: var(--ink);
       font-family: var(--sans);
@@ -59,194 +49,184 @@
       overflow-x: hidden;
     }
 
-    body.modal-open {
-      overflow: hidden;
+    body,
+    main,
+    section,
+    header,
+    footer,
+    nav,
+    div,
+    article,
+    aside {
+      max-width: 100%;
     }
 
-    ::selection {
-      background: var(--slate);
-      color: var(--ink);
+    img,
+    svg,
+    video,
+    canvas {
+      display: block;
+      max-width: 100%;
+    }
+
+    img {
+      height: auto;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
     a {
       color: inherit;
-      text-decoration: none;
     }
 
-    button {
-      font: inherit;
+    h1,
+    h2,
+    h3,
+    p {
+      overflow-wrap: break-word;
     }
 
     .wrap {
       width: min(var(--wide), calc(100% - 9vw));
-      margin: auto;
+      max-width: var(--wide);
+      margin-left: auto;
+      margin-right: auto;
+      min-width: 0;
     }
 
-    .eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.19em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--taupe);
-    }
-
-    /* =========================================================
-       SCROLL PROGRESS BAR
-    ========================================================= */
-
-    .progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 100%;
-      background: linear-gradient(90deg, var(--taupe), var(--slate));
-      transform: scaleX(0);
-      transform-origin: left;
-      z-index: 30;
-      pointer-events: none;
-    }
-
-    /* =========================================================
+    /* =========================
        HEADER
-    ========================================================= */
+    ========================= */
 
     .topbar {
       height: 88px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(40, 38, 35, 0.12);
+      gap: 24px;
       position: fixed;
       z-index: 20;
       top: 0;
       left: 0;
       width: 100%;
+      max-width: 100%;
       padding: 0 4.5vw;
-      color: var(--ink);
-      background: rgba(236, 233, 230, 0.97);
+      background: rgba(236, 233, 230, 0.94);
+      border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
-      animation: dropIn 0.9s var(--ease) backwards;
-      transition: box-shadow 0.35s;
-    }
-
-    .topbar.scrolled {
-      box-shadow: 0 8px 30px rgba(40, 38, 35, 0.08);
-    }
-
-    @keyframes dropIn {
-      from {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 13px;
-      font-size: 0.82rem;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      font-weight: 600;
+      gap: 12px;
+      min-width: 0;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
     .brand-mark {
-      height: 39px;
-      width: 39px;
-      border: 1px solid rgba(40, 38, 35, 0.65);
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
       border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper);
       display: grid;
       place-items: center;
       font-family: var(--serif);
-      font-size: 1.05rem;
-      letter-spacing: -0.05em;
-      transition:
-        background 0.3s,
-        color 0.3s,
-        transform 0.5s var(--ease);
+      font-size: 0.95rem;
+      overflow: hidden;
     }
 
-    .brand:hover .brand-mark {
-      background: var(--ink);
-      color: var(--paper);
-      transform: rotate(360deg);
+    .brand-name {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 3px;
     }
 
     .nav {
       display: flex;
-      gap: 34px;
       align-items: center;
-      font-size: 0.73rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      justify-content: flex-end;
+      gap: 34px;
+      min-width: 0;
     }
 
     .nav a {
-      opacity: 0.86;
-      transition: opacity 0.2s;
-      position: relative;
-    }
-
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -6px;
-      height: 1px;
-      background: var(--taupe);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s var(--ease);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
     }
 
     .nav a:hover {
-      opacity: 1;
-    }
-
-    .nav a:hover::after {
-      transform: scaleX(1);
+      opacity: 0.55;
     }
 
     .menu {
       display: none;
-      background: none;
       border: 0;
-      color: inherit;
-      font-size: 1.5rem;
+      background: transparent;
+      padding: 8px;
       cursor: pointer;
+      color: var(--ink);
+      flex: 0 0 auto;
+    }
+
+    .menu svg {
+      width: 24px;
+      height: 24px;
     }
 
     main {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
       padding-top: 88px;
     }
 
-    /* =========================================================
-       HERO / SLIDESHOW
-    ========================================================= */
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
       height: calc(100svh - 88px);
       min-height: 440px;
+      width: 100%;
+      max-width: 100%;
       position: relative;
-      color: var(--ink);
-      background: #262220;
       display: flex;
-      flex-direction: column;
       overflow: hidden;
-      animation: heroIn 1.4s ease backwards;
-    }
-
-    @keyframes heroIn {
-      from {
-        opacity: 0;
-      }
+      background: #262220;
     }
 
     .slides {
       position: relative;
-      flex: 1;
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
       min-height: 0;
       background: #262220;
       overflow: hidden;
@@ -255,40 +235,29 @@
     .slide {
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       opacity: 0;
       visibility: hidden;
-      transition:
-        opacity 0.85s ease,
-        visibility 0.85s ease;
-      overflow: hidden;
-      background: #262220;
+      transition: opacity 0.8s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
     }
 
     .slide::before {
       content: "";
       position: absolute;
-      inset: -40px;
-      background-image: var(--slide-background);
-      background-size: cover;
-      background-position: center;
-      filter: blur(30px) saturate(1.1);
-      transform: scale(1.12);
-      opacity: 0.7;
-      z-index: 0;
-    }
-
-    .slide::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(20, 17, 15, 0.12);
       z-index: 1;
-      pointer-events: none;
-    }
-
-    .slide.is-active {
-      opacity: 1;
-      visibility: visible;
+      inset: -40px;
+      background-position: center;
+      background-size: cover;
+      filter: blur(22px);
+      transform: scale(1.05);
+      opacity: 0.5;
     }
 
     .slide img {
@@ -297,378 +266,217 @@
       top: 0;
       left: 0;
       width: 100%;
+      max-width: 100%;
       height: calc(100% - var(--dots-space));
       object-fit: contain;
       object-position: center;
-      display: block;
-      transform: scale(1);
-      transition: transform 8s ease-out;
     }
 
-    .slide.is-active img {
-      transform: scale(1.035);
-    }
-
-    /* @media (min-width: 851px) {
-
-      :root {
-        --dots-space: 0px;
-      }
-
-      .slide img {
-        display: none;
-      }
-
-      .slide::before {
-        inset: 0;
-        filter: none;
-        opacity: 1;
-        background-size: cover;
-        background-position: var(--slide-pos, center 30%);
-        transform: scale(1);
-        transition: transform 8s ease-out;
-      }
-
-      .slide.is-active::before {
-        transform: scale(1.05);
-      }
-
-    } */
-
-    /* =========================================================
-       SLIDESHOW CONTROLS
-    ========================================================= */
-
-    .slider-controls {
+    .slide-overlay {
       position: absolute;
+      z-index: 3;
       inset: 0;
-      height: auto;
-      flex: auto;
-      display: block;
-      background: transparent;
-      border: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.52),
+        rgba(0, 0, 0, 0.02) 55%
+      );
       pointer-events: none;
-      z-index: 5;
     }
 
-    .slider-arrow {
+    .slide-content {
       position: absolute;
-      top: calc(50% - (var(--dots-space) / 2));
-      transform: translateY(-50%);
-      width: 56px;
-      height: 56px;
-      border: 0;
-      border-radius: 50%;
-      background: transparent;
+      z-index: 4;
+      left: clamp(22px, 5vw, 72px);
+      right: clamp(22px, 5vw, 72px);
+      bottom: clamp(74px, 9vw, 110px);
+      max-width: 680px;
       color: #fff;
-      font-size: 2.2rem;
-      line-height: 1;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      pointer-events: auto;
-      opacity: 0.16;
-      text-shadow: 0 0 14px rgba(0, 0, 0, 0.45);
-      transition:
-        opacity 0.3s,
-        background 0.3s,
-        transform 0.3s;
     }
 
-    .hero:hover .slider-arrow {
-      opacity: 0.3;
+    .slide-kicker {
+      margin: 0 0 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.82;
     }
 
-    .slider-arrow:hover,
-    .slider-arrow:focus-visible {
-      opacity: 0.95;
-      background: rgba(35, 31, 29, 0.28);
+    .slide-content h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.4rem, 6vw, 6rem);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
     }
 
-    .slider-arrow:active {
-      transform: translateY(-50%) scale(0.92);
+    .slide-content p {
+      margin: 18px 0 0;
+      max-width: 500px;
+      font-size: clamp(0.86rem, 1.4vw, 1rem);
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.86);
     }
 
-    .slider-arrow[data-direction="prev"] {
-      left: clamp(10px, 2.5vw, 36px);
-    }
-
-    .slider-arrow[data-direction="next"] {
-      right: clamp(10px, 2.5vw, 36px);
-    }
-
-    @media (hover: none) {
-      .slider-arrow {
-        opacity: 0.22;
-      }
-    }
-
-    .slide-dots {
+    .dots {
       position: absolute;
-      left: 50%;
-      bottom: 14px;
-      transform: translateX(-50%);
+      z-index: 5;
+      left: clamp(22px, 5vw, 72px);
+      bottom: 28px;
       display: flex;
       align-items: center;
       gap: 8px;
-      pointer-events: auto;
-      padding: 10px 14px;
-      border-radius: 99px;
-      background: rgba(35, 31, 29, 0.55);
-      backdrop-filter: blur(6px);
     }
 
-    .slide-dot {
-      width: 8px;
-      height: 8px;
+    .dot {
+      width: 7px;
+      height: 7px;
+      padding: 0;
       border: 0;
       border-radius: 50%;
-      padding: 0;
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.38);
       cursor: pointer;
-      transition:
-        width 0.35s var(--ease),
-        background 0.25s;
     }
 
-    .slide-dot:hover {
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .slide-dot[aria-current="true"] {
-      width: 26px;
-      border-radius: 9px;
+    .dot.active {
       background: #fff;
     }
 
-    .slide-count {
-      display: none;
-    }
-
-    /* =========================================================
-       BUTTONS
-    ========================================================= */
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      gap: 22px;
-      border: 1px solid currentColor;
-      background: transparent;
-      color: inherit;
-      cursor: pointer;
-      padding: 15px 20px;
-      text-transform: uppercase;
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      transition:
-        background 0.25s,
-        color 0.25s,
-        gap 0.35s var(--ease);
-    }
-
-    .button.solid {
-      background: var(--white);
-      color: var(--ink);
-      border-color: var(--ink);
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      gap: 0;
-      padding: 20px 56px;
-    }
-
-    .button.solid:hover {
-      background: var(--slate);
-      color: var(--white);
-      border-color: var(--ink);
-    }
-
-    /* =========================================================
-       ABOUT
-    ========================================================= */
+    /* =========================
+       INTRO
+    ========================= */
 
     .intro {
-      padding: 110px 0 120px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: clamp(40px, 9vw, 150px);
-      align-items: center;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(50px, 8vw, 120px);
+      padding: clamp(80px, 10vw, 150px) 0;
     }
 
-    .intro > div:first-child img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 19 / 20;
-      object-fit: cover;
-      object-position: center 25%;
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .intro h2 {
+      margin: 0;
+      max-width: 650px;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 5.4rem);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
     }
 
     .intro-copy {
-      padding: 0;
-    }
-
-    .intro .intro-title {
-      font: 500 clamp(3rem, 5vw, 4.5rem) / 1 var(--serif);
-      letter-spacing: -0.035em;
-      margin: 0 0 clamp(40px, 6vw, 80px);
-    }
-
-    .intro .intro-title span {
-      display: block;
-      font-size: 0.52em;
-      letter-spacing: -0.02em;
-      margin-top: 0.25em;
+      min-width: 0;
     }
 
     .intro-copy p {
-      font-size: 1rem;
-      line-height: 1.95;
-      color: #4a4642;
-      margin: 0 0 30px;
-      max-width: 620px;
-    }
-
-    .intro .button.solid {
-      margin-top: 28px;
-    }
-
-    /* =========================================================
-       WHAT I PHOTOGRAPH
-    ========================================================= */
-
-    .what-band {
-      background: var(--slate);
-      padding: 105px 0 115px;
-    }
-
-    .what h2 {
-      font: 600 clamp(2.8rem, 5vw, 4.4rem) / 1 var(--serif);
-      letter-spacing: -0.04em;
-      margin: 0 0 52px;
-    }
-
-    .service-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
-    }
-
-    .service-card {
-      background: #f4f3f0;
-      padding: 34px 30px 38px;
-      min-height: 300px;
-      position: relative;
-      overflow: hidden;
-      transition:
-        box-shadow 0.4s,
-        opacity 0.9s ease,
-        transform 0.9s var(--ease);
-    }
-
-    .service-card::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 3px;
-      background: var(--slate);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s var(--ease);
-    }
-
-    .service-card:hover::after {
-      transform: scaleX(1);
-    }
-
-    .service-card.settled:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 22px 40px rgba(40, 38, 35, 0.14);
-    }
-
-    .service-card .number {
-      font: 500 3rem / 1 var(--serif);
-      color: var(--taupe);
-      display: inline-block;
-      transform: translateX(-16px);
-      opacity: 0;
-      transition:
-        transform 0.8s var(--ease) 0.25s,
-        opacity 0.8s ease 0.25s;
-    }
-
-    .service-card.in .number {
-      transform: none;
-      opacity: 1;
-    }
-
-    .service-card h3 {
-      font-size: 1.45rem;
-      line-height: 1.4;
-      margin: 34px 0 22px;
-    }
-
-    .service-card p {
-      font-size: 1rem;
-      line-height: 1.55;
-      color: var(--muted);
       margin: 0;
+      max-width: 650px;
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
+      line-height: 1.8;
+      color: #4e4945;
     }
 
-    /* =========================================================
-       PORTFOLIO
-    ========================================================= */
+    .intro-copy p + p {
+      margin-top: 20px;
+    }
 
-    .portfolio {
-      padding: 105px 0 120px;
-      background: var(--paper-2);
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services {
+      width: 100%;
+      max-width: 100%;
+      padding-bottom: clamp(80px, 10vw, 150px);
     }
 
     .section-head {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: space-between;
-      margin-bottom: 38px;
+      gap: 30px;
+      margin-bottom: 34px;
     }
 
     .section-head h2 {
-      font: 500 clamp(2.6rem, 5vw, 5rem) / 1 var(--serif);
-      letter-spacing: -0.04em;
-      margin: 15px 0 0;
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
     }
 
-    .filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .filter {
-      border: 1px solid var(--slate);
-      background: transparent;
+    .section-head p {
+      max-width: 430px;
+      margin: 0;
       color: var(--muted);
-      border-radius: 99px;
-      padding: 10px 16px;
-      font-size: 0.69rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: 0.2s;
+      line-height: 1.65;
     }
 
-    .filter:hover,
-    .filter.active {
-      background: var(--slate);
-      border-color: var(--slate);
-      color: white;
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      width: 100%;
+    }
+
+    .service-card {
+      min-width: 0;
+      padding: 34px 30px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .service-number {
+      display: block;
+      margin-bottom: 50px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+    }
+
+    .service-card h3 {
+      margin: 0 0 12px;
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* =========================
+       PORTFOLIO
+    ========================= */
+
+    .portfolio {
+      width: 100%;
+      max-width: 100%;
+      padding-bottom: clamp(90px, 11vw, 160px);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 18px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
     }
 
     .work-card {
@@ -676,6 +484,8 @@
       overflow: hidden;
       background: #c8b8a7;
       min-height: 310px;
+      min-width: 0;
+      max-width: 100%;
       grid-column: span 4;
       isolation: isolate;
     }
@@ -698,178 +508,110 @@
       position: absolute;
       inset: 0;
       width: 100%;
+      max-width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.7s var(--ease);
-      z-index: -2;
-    }
-
-    .work-card::after {
-      content: "";
-      position: absolute;
-      inset: 35% 0 0;
-      background: linear-gradient(
-        transparent,
-        rgba(22, 19, 16, 0.62)
-      );
-      z-index: -1;
+      transition: transform 0.7s ease;
     }
 
     .work-card:hover img {
-      transform: scale(1.06);
+      transform: scale(1.04);
     }
 
-    .work-card .card-caption {
+    .work-overlay {
       position: absolute;
-      left: 25px;
-      bottom: 24px;
-      color: white;
-      transition: transform 0.5s var(--ease);
+      z-index: 2;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.55),
+        transparent 55%
+      );
     }
 
-    .work-card:hover .card-caption {
-      transform: translateY(-6px);
+    .work-meta {
+      color: #fff;
+      min-width: 0;
     }
 
-    .card-caption small {
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
+    .work-meta small {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #ead6c1;
+      opacity: 0.75;
     }
 
-    .card-caption h3 {
-      font: 500 1.8rem var(--serif);
-      margin: 6px 0 0;
+    .work-meta h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.4vw, 2.3rem);
+      font-weight: 400;
     }
 
-    .work-card[hidden] {
-      display: none;
-    }
-
-    /* =========================================================
-       STATEMENT
-    ========================================================= */
-
-    .statement {
-      padding: 150px 0;
-      text-align: center;
-      background: var(--slate);
-      color: var(--ink);
-      overflow: hidden;
-    }
-
-    .statement .eyebrow {
-      color: #3c434b;
-    }
-
-    .statement blockquote {
-      font: 500 clamp(2.3rem, 5.5vw, 5.4rem) / 1.12 var(--serif);
-      font-style: italic;
-      letter-spacing: -0.035em;
-      margin: 25px auto 24px;
-      max-width: 970px;
-    }
-
-    .statement blockquote .w {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(26px);
-      transition:
-        opacity 0.7s ease,
-        transform 0.8s var(--ease);
-      transition-delay: var(--wd, 0s);
-    }
-
-    .statement blockquote.in .w {
-      opacity: 1;
-      transform: none;
-    }
-
-    .statement .byline {
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #3c434b;
-    }
-
-    /* =========================================================
+    /* =========================
        PROCESS
-    ========================================================= */
+    ========================= */
 
     .process {
-      padding: 130px 0 145px;
-    }
-
-    .process h2 {
-      font: 600 clamp(2.6rem, 5vw, 4.7rem) / 1 var(--serif);
-      letter-spacing: -0.04em;
-      margin: 0 0 75px;
+      width: 100%;
+      max-width: 100%;
+      padding-bottom: clamp(90px, 11vw, 150px);
     }
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 28px;
+      width: 100%;
     }
 
     .step {
       position: relative;
+      min-width: 0;
+    }
+
+    .step-number {
+      display: block;
+      margin-bottom: 30px;
+      font-family: var(--serif);
+      font-size: 2rem;
+    }
+
+    .step h3 {
+      margin: 0 0 12px;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
     }
 
     .step:not(:last-child)::after {
       content: "";
       position: absolute;
+      top: 15px;
+      left: 74px;
+      right: -20px;
       height: 1px;
       background: var(--line);
-      top: 57px;
-      left: 139px;
-      right: -20px;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 1s var(--ease) 0.5s;
     }
 
-    .step.in:not(:last-child)::after {
-      transform: scaleX(1);
-    }
-
-    .step-number {
-      width: 94px;
-      height: 94px;
-      border-radius: 50%;
-      background: var(--taupe);
-      display: grid;
-      place-items: center;
-      color: white;
-      font: 600 2rem var(--serif);
-      margin-bottom: 25px;
-      transform: scale(0.5);
-      transition: transform 0.8s var(--ease) 0.2s;
-    }
-
-    .step.in .step-number {
-      transform: scale(1);
-    }
-
-    .step h3 {
-      font-size: 1.25rem;
-      margin: 0 0 11px;
-    }
-
-    .step p {
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 0.95rem;
-      max-width: 250px;
-      margin: 0;
-    }
-
-    /* =========================================================
+    /* =========================
        FOOTER
-    ========================================================= */
+    ========================= */
 
     .site-footer {
+      width: 100%;
+      max-width: 100%;
       background: #0d0d0d;
       color: #fff;
       padding: 100px 0 34px;
@@ -877,96 +619,92 @@
 
     .footer-top {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: clamp(40px, 8vw, 120px);
       align-items: end;
       padding-bottom: 72px;
     }
 
-    .footer-cta h2 {
-      font: 600 clamp(2.6rem, 5vw, 4.4rem) / 1.05 var(--serif);
-      letter-spacing: -0.04em;
-      margin: 0 0 18px;
-      color: #fff;
+    .footer-copy {
+      min-width: 0;
     }
 
-    .footer-cta p {
-      font-size: 1.05rem;
+    .footer-copy .eyebrow {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-copy h2 {
+      margin: 0;
+      max-width: 720px;
+      font-family: var(--serif);
+      font-size: clamp(2.7rem, 6vw, 6.2rem);
+      font-weight: 400;
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+      overflow-wrap: break-word;
+    }
+
+    .footer-contact {
+      min-width: 0;
+    }
+
+    .footer-contact p {
+      margin: 0 0 24px;
+      max-width: 450px;
+      color: rgba(255, 255, 255, 0.65);
       line-height: 1.7;
-      color: rgba(255, 255, 255, 0.72);
-      max-width: 440px;
-      margin: 0 0 34px;
-    }
-
-    .footer-reach h3 {
-      font-size: 0.72rem;
-      letter-spacing: 0.19em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.6);
-      margin: 0 0 20px;
     }
 
     .social-links {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      width: 100%;
+      max-width: 100%;
     }
 
     .social {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 14px 22px 14px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 99px;
-      background: transparent;
-      color: #fff;
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
+      gap: 10px;
+      min-width: 0;
+      max-width: 100%;
+      padding: 13px 18px 13px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
       transition:
-        background 0.25s,
-        color 0.25s,
-        border-color 0.25s,
-        transform 0.35s var(--ease);
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .social:hover {
+      background: #fff;
+      color: #111;
     }
 
     .social svg {
-      width: 20px;
-      height: 20px;
-      flex: none;
-    }
-
-    .social:hover,
-    .social:focus-visible {
-      background: #fff;
-      border-color: #fff;
-      color: #0d0d0d;
-      transform: translateY(-4px);
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.18);
-      padding-top: 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.65);
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.68rem;
     }
 
-    .footer-brand {
-      font: 500 1.2rem var(--serif);
-      color: #fff;
-    }
-
-    /* =========================================================
-       CONTACT POP-UP
-    ========================================================= */
+    /* =========================
+       CONTACT MODAL
+    ========================= */
 
     .modal {
       position: fixed;
@@ -974,12 +712,15 @@
       z-index: 100;
       display: grid;
       place-items: center;
+      width: 100%;
+      max-width: 100%;
       padding: 20px;
       visibility: hidden;
       opacity: 0;
+      background: rgba(0, 0, 0, 0.58);
       transition:
-        opacity 0.35s ease,
-        visibility 0.35s;
+        opacity 0.25s ease,
+        visibility 0.25s ease;
     }
 
     .modal.open {
@@ -990,17 +731,15 @@
     .modal-card {
       position: relative;
       width: min(640px, 100%);
+      max-width: 100%;
       max-height: calc(100svh - 40px);
+      min-width: 0;
       overflow-y: auto;
+      overflow-x: hidden;
       background: #fff;
+      color: var(--ink);
       border-radius: 22px;
-      box-shadow: 0 30px 80px rgba(20, 17, 15, 0.35);
-      transform: translateY(26px) scale(0.96);
-      transition: transform 0.5s var(--ease);
-    }
-
-    .modal.open .modal-card {
-      transform: none;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
     }
 
     .modal-head {
@@ -1009,52 +748,41 @@
       justify-content: space-between;
       gap: 20px;
       padding: 28px 30px 22px;
-      border-bottom: 1px solid #ebe8e4;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-head > div {
+      min-width: 0;
     }
 
     .modal-head h2 {
-      font: 600 1.6rem / 1.2 var(--serif);
-      letter-spacing: -0.02em;
-      margin: 0 0 6px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
     }
 
     .modal-head p {
-      margin: 0;
+      margin: 8px 0 0;
       color: var(--muted);
-      font-size: 0.98rem;
       line-height: 1.5;
     }
 
     .modal-close {
-      flex: none;
-      width: 36px;
-      height: 36px;
-      border: 0;
-      border-radius: 50%;
-      background: transparent;
-      color: #7b838c;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
       display: grid;
       place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
       cursor: pointer;
-      transition:
-        background 0.25s,
-        color 0.25s,
-        transform 0.4s var(--ease);
-    }
-
-    .modal-close:hover,
-    .modal-close:focus-visible {
-      background: var(--slate-soft);
-      color: var(--ink);
-      transform: rotate(90deg);
-    }
-
-    .modal-close svg {
-      width: 20px;
-      height: 20px;
     }
 
     .contact-form {
+      width: 100%;
+      max-width: 100%;
       padding: 26px 30px 28px;
       display: grid;
       gap: 20px;
@@ -1062,209 +790,122 @@
 
     .field-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 16px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .field {
+      min-width: 0;
     }
 
     .field label {
       display: block;
-      font-weight: 600;
-      font-size: 0.92rem;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
     .field input,
-    .field select,
     .field textarea {
+      display: block;
       width: 100%;
-      font: inherit;
-      font-size: 1rem;
-      color: var(--ink);
+      max-width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 13px 14px;
       background: #fff;
-      border: 1px solid #dcd8d3;
-      border-radius: 14px;
-      padding: 15px 18px;
-      outline: 0;
-      transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
-    }
-
-    .field textarea {
-      min-height: 130px;
-      resize: vertical;
-      line-height: 1.5;
-    }
-
-    .field select {
-      appearance: none;
-      padding-right: 46px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23282623' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 18px center;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: #9aa1a9;
+      color: var(--ink);
+      outline: none;
     }
 
     .field input:focus,
-    .field select:focus,
     .field textarea:focus {
-      border-color: var(--slate);
-      box-shadow: 0 0 0 4px rgba(133, 131, 130, 0.16);
+      border-color: var(--ink);
     }
 
-    .send {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      border: 0;
-      border-radius: 14px;
-      padding: 17px 20px;
-      background: var(--slate);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition:
-        background 0.25s,
-        transform 0.25s;
-    }
-
-    .send:hover {
-      background: var(--ink);
-    }
-
-    .send:active {
-      transform: scale(0.99);
-    }
-
-    .send:disabled {
-      opacity: 0.7;
-      cursor: progress;
-    }
-
-    .send svg {
-      width: 19px;
-      height: 19px;
-    }
-
-    .form-status {
-      margin: -6px 0 0;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #a3392f;
-    }
-
-    .form-status:empty {
-      display: none;
-    }
-
-    .form-note {
-      margin: 0;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #8a9098;
+    .field textarea {
+      min-height: 150px;
+      resize: vertical;
     }
 
     .honey {
-      position: absolute;
-      left: -9999px;
-      width: 0;
-      height: 0;
-      overflow: hidden;
-      opacity: 0;
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
-    .modal-success {
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .form-status {
+      min-width: 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    .send-btn {
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 22px;
+      background: var(--ink);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .send-btn:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+
+    .sent-message {
       display: none;
-      padding: 54px 30px 48px;
-      text-align: center;
+      padding: 34px 30px 40px;
     }
 
     .modal.sent .contact-form {
       display: none;
     }
 
-    .modal.sent .modal-success {
+    .modal.sent .sent-message {
       display: block;
     }
 
-    .modal-success svg {
-      width: 62px;
-      height: 62px;
-      color: var(--slate);
+    .sent-message h3 {
+      margin: 0 0 12px;
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
     }
 
-    .modal-success h3 {
-      font: 600 1.8rem var(--serif);
-      margin: 18px 0 10px;
-    }
-
-    .modal-success p {
+    .sent-message p {
+      margin: 0;
       color: var(--muted);
-      line-height: 1.6;
-      margin: 0 auto 28px;
-      max-width: 380px;
+      line-height: 1.7;
     }
 
-    .modal-success .button.solid {
-      padding: 17px 44px;
-    }
-
-    /* =========================================================
-       SCROLL ANIMATIONS
-    ========================================================= */
-
-    [data-anim] {
-      opacity: 0;
-      transition:
-        opacity 0.9s ease,
-        transform 0.9s var(--ease);
-      transition-delay: var(--d, 0s);
-    }
-
-    [data-anim="up"] {
-      transform: translateY(42px);
-    }
-
-    [data-anim="left"] {
-      transform: translateX(-56px);
-    }
-
-    [data-anim="right"] {
-      transform: translateX(56px);
-    }
-
-    [data-anim="zoom"] {
-      transform: scale(0.92);
-    }
-
-    [data-anim="words"] {
-      opacity: 1;
-    }
-
-    [data-anim].in {
-      opacity: 1;
-      transform: none;
-    }
-
-    [data-anim].settled {
-      transition-delay: 0s;
-      transition-duration: 0.35s;
-    }
-
-    /* =========================================================
+    /* =========================
        TABLET
-    ========================================================= */
+    ========================= */
 
     @media (max-width: 850px) {
       .wrap {
         width: calc(100% - 48px);
+        max-width: calc(100% - 48px);
       }
 
       .topbar {
@@ -1276,12 +917,12 @@
         padding-top: 74px;
       }
 
-      .hero {
-        height: calc(100svh - 74px);
-      }
-
       html {
         scroll-padding-top: 74px;
+      }
+
+      .hero {
+        height: calc(100svh - 74px);
       }
 
       .nav {
@@ -1310,22 +951,49 @@
       }
 
       .footer-top {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 48px;
       }
     }
 
-    /* =========================================================
+    /* =========================
        MOBILE
-    ========================================================= */
+    ========================= */
 
     @media (max-width: 640px) {
       :root {
         --dots-space: 48px;
       }
 
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+      }
+
+      .wrap {
+        width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+        min-width: 0;
+      }
+
       .topbar {
+        width: 100%;
+        max-width: 100%;
         height: 68px;
+        padding: 0 16px;
+        gap: 12px;
+      }
+
+      .brand {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .brand-name {
+        max-width: calc(100vw - 90px);
       }
 
       .brand {
@@ -1333,17 +1001,18 @@
       }
 
       .brand-mark {
-        height: 34px;
         width: 34px;
+        height: 34px;
+      }
+
+      .brand small {
+        font-size: 0.5rem;
       }
 
       main {
+        width: 100%;
+        max-width: 100%;
         padding-top: 68px;
-      }
-
-      .hero {
-        height: calc(100svh - 68px);
-        min-height: 400px;
       }
 
       html {
@@ -1360,6 +1029,8 @@
         top: 68px;
         left: 0;
         right: 0;
+        width: 100%;
+        max-width: 100%;
         background: var(--ink);
         color: white;
         padding: 22px 24px 28px;
@@ -1372,97 +1043,97 @@
         display: flex;
       }
 
-      .slider-arrow {
-        width: 44px;
-        height: 44px;
-        font-size: 1.8rem;
+      .nav a {
+        font-size: 0.72rem;
       }
 
-      .slide-dots {
-        bottom: 9px;
-        gap: 7px;
-        padding: 9px 11px;
+      .hero {
+        width: 100%;
+        max-width: 100%;
+        height: calc(100svh - 68px);
+        min-height: 400px;
       }
 
-      .slide-dot {
-        width: 7px;
-        height: 7px;
+      .slide-content {
+        left: 20px;
+        right: 20px;
+        bottom: 76px;
+        max-width: calc(100% - 40px);
       }
 
-      .slide-dot[aria-current="true"] {
-        width: 21px;
+      .slide-content h1 {
+        font-size: clamp(2.2rem, 12vw, 4rem);
+      }
+
+      .slide-content p {
+        max-width: 100%;
+      }
+
+      .dots {
+        left: 20px;
+        bottom: 24px;
       }
 
       .intro {
-        padding: 70px 0 80px;
-        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
         gap: 36px;
+        padding: 70px 0 80px;
       }
 
-      .intro-copy p {
-        font-size: 0.96rem;
-        margin-bottom: 22px;
+      .intro h2 {
+        font-size: clamp(2.5rem, 13vw, 4.2rem);
       }
 
-      .intro .intro-title {
-        margin-bottom: 28px;
-      }
-
-      .what-band {
-        padding: 72px 0 80px;
-      }
-
-      .what h2 {
-        font-size: 2.8rem;
-        margin-bottom: 28px;
-      }
-
-      .service-cards {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .service-card {
-        min-height: 0;
-        padding: 26px 24px 30px;
-      }
-
-      .service-card .number {
-        font-size: 2.45rem;
-      }
-
-      .service-card h3 {
-        font-size: 1.25rem;
-        margin: 22px 0 12px;
-      }
-
-      .portfolio {
-        padding: 82px 0 88px;
+      .intro-copy {
+        width: 100%;
+        max-width: 100%;
       }
 
       .section-head {
         display: block;
-        margin-bottom: 27px;
+        margin-bottom: 28px;
       }
 
-      .filters {
-        justify-content: flex-start;
-        margin-top: 24px;
-        gap: 6px;
+      .section-head h2 {
+        margin-bottom: 18px;
       }
 
-      .filter {
-        padding: 9px 12px;
-        font-size: 0.62rem;
+      .section-head p {
+        max-width: 100%;
+      }
+
+      .service-cards {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .service-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 28px 24px;
+      }
+
+      .service-number {
+        margin-bottom: 36px;
       }
 
       .grid {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
         gap: 12px;
       }
 
       .work-card,
       .work-card:nth-child(n) {
-        grid-column: span 12;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        grid-column: 1 / -1;
         min-height: 360px;
       }
 
@@ -1471,62 +1142,91 @@
         min-height: 280px;
       }
 
-      .statement {
-        padding: 105px 24px;
+      .work-overlay {
+        padding: 20px;
       }
 
       .process {
-        padding: 88px 0;
-      }
-
-      .process h2 {
-        margin-bottom: 42px;
+        width: 100%;
+        max-width: 100%;
       }
 
       .steps {
-        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 42px 22px;
-      }
-
-      .step-number {
-        width: 70px;
-        height: 70px;
-        font-size: 1.6rem;
-        margin-bottom: 17px;
       }
 
       .step:not(:last-child)::after {
         display: none;
       }
 
-      .step h3 {
-        font-size: 1.08rem;
+      .step-number {
+        margin-bottom: 20px;
       }
 
-      .step p {
-        font-size: 0.85rem;
+      .step h3 {
+        font-size: 1.3rem;
       }
 
       .site-footer {
-        padding: 72px 0 28px;
+        width: 100%;
+        max-width: 100%;
+        padding: 76px 0 28px;
       }
 
       .footer-top {
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 48px;
         padding-bottom: 52px;
       }
 
+      .footer-copy h2 {
+        max-width: 100%;
+        font-size: clamp(2.7rem, 13vw, 4.6rem);
+      }
+
+      .footer-contact {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .footer-contact p {
+        max-width: 100%;
+      }
+
+      .social-links {
+        width: 100%;
+        max-width: 100%;
+        gap: 10px;
+      }
+
       .social {
+        max-width: 100%;
         padding: 13px 18px 13px 14px;
       }
 
       .footer-bottom {
+        width: 100%;
+        max-width: 100%;
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
       }
 
       .modal {
+        width: 100%;
+        max-width: 100%;
         padding: 14px;
+      }
+
+      .modal-card {
+        width: 100%;
+        max-width: 100%;
+        max-height: calc(100svh - 28px);
       }
 
       .modal-head {
@@ -1538,17 +1238,72 @@
       }
 
       .contact-form {
+        width: 100%;
+        max-width: 100%;
         padding: 22px;
       }
 
       .field-row {
-        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .form-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .send-btn {
+        width: 100%;
+      }
+
+      .sent-message {
+        padding: 28px 22px 32px;
       }
     }
 
-    /* =========================================================
+    /* =========================
+       VERY SMALL PHONES
+    ========================= */
+
+    @media (max-width: 380px) {
+      .wrap {
+        width: calc(100% - 24px);
+        max-width: calc(100% - 24px);
+      }
+
+      .topbar {
+        padding: 0 12px;
+      }
+
+      .brand {
+        gap: 8px;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      .steps {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 34px;
+      }
+
+      .work-card,
+      .work-card:nth-child(n) {
+        min-height: 300px;
+      }
+
+      .social {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* =========================
        REDUCED MOTION
-    ========================================================= */
+    ========================= */
 
     @media (prefers-reduced-motion: reduce) {
       html {
@@ -1558,671 +1313,529 @@
       *,
       *::before,
       *::after {
-        transition: none !important;
-        animation: none !important;
-      }
-
-      [data-anim],
-      .statement blockquote .w,
-      .service-card .number {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-
-      .step-number {
-        transform: none !important;
-      }
-
-      .step::after {
-        transform: scaleX(1) !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
-
 </head>
 
 <body>
 
-  <div class="progress" aria-hidden="true"></div>
-
-  <!-- =========================================================
+  <!-- =========================
        HEADER
-  ========================================================= -->
+  ========================= -->
 
   <header class="topbar">
-
-    <a
-      class="brand"
-      href="#home"
-      aria-label="Theophillus Atansuyi home"
-    >
+    <a class="brand" href="#">
       <span class="brand-mark">TA</span>
-      <span>Theophillus Atansuyi</span>
+
+      <span class="brand-name">
+        Theophillus Atansuyi
+        <small>Photographer & Visual Storyteller</small>
+      </span>
     </a>
 
     <button
       class="menu"
+      id="menu-toggle"
       type="button"
       aria-label="Open navigation"
       aria-expanded="false"
     >
-      ☰
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+      >
+        <path d="M4 7h16"></path>
+        <path d="M4 12h16"></path>
+        <path d="M4 17h16"></path>
+      </svg>
     </button>
 
-    <nav class="nav" aria-label="Main navigation">
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
     </nav>
-
   </header>
 
   <main>
 
-    <!-- =======================================================
-         HERO SLIDESHOW
-    ======================================================== -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
-    <section
-      class="hero"
-      id="home"
-      aria-label="Photography slideshow"
-    >
-
+    <section class="hero" aria-label="Photography portfolio introduction">
       <div class="slides">
 
-        <div
-          class="slide is-active"
-          style="--slide-background: url('./profile.jpeg'); --slide-pos: center 40%;"
-        >
+        <article class="slide active">
           <img
-            src="./slide5.jpeg"
-            alt="Fashion portrait of a woman in black against a bright studio backdrop"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1800&q=85"
+            alt="Portrait photography"
           >
-        </div>
 
-        <div
-          class="slide"
-          style="--slide-background: url('./slide3.jpeg'); --slide-pos: center 35%;"
-        >
+          <div class="slide-overlay"></div>
+
+          <div class="slide-content">
+            <p class="slide-kicker">Portrait Photography</p>
+
+            <h1>Stories told through presence.</h1>
+
+            <p>
+              Portraits with a quiet, editorial approach —
+              honest, intentional and deeply human.
+            </p>
+          </div>
+        </article>
+
+        <article class="slide">
           <img
-            src="./slide3.jpeg"
-            alt="Studio portrait of a man wearing a red shirt"
-            loading="lazy"
-            decoding="async"
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=85"
+            alt="Fashion editorial photography"
           >
-        </div>
 
-        <div
-          class="slide"
-          style="--slide-background: url('./slide4.jpeg'); --slide-pos: center 65%;"
-        >
+          <div class="slide-overlay"></div>
+
+          <div class="slide-content">
+            <p class="slide-kicker">Editorial</p>
+
+            <h1>Images with a point of view.</h1>
+
+            <p>
+              Fashion and editorial imagery shaped around
+              mood, character and visual storytelling.
+            </p>
+          </div>
+        </article>
+
+        <article class="slide">
           <img
-            src="./slide4.jpeg"
-            alt="Dramatic studio portrait of a dancer in a dark pose"
-            loading="lazy"
-            decoding="async"
+            src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=1800&q=85"
+            alt="Commercial portrait photography"
           >
-        </div>
 
-        <div
-          class="slide"
-          style="--slide-background: url('./slide5.jpeg'); --slide-pos: center 50%;"
-        >
-          <img
-            src="./slide5.jpeg"
-            alt="Fashion portrait of a dancer in a hat against a warm studio backdrop"
-            loading="lazy"
-            decoding="async"
-          >
-        </div>
+          <div class="slide-overlay"></div>
 
-        <div
-          class="slide"
-          style="--slide-background: url('./slide6.jpeg'); --slide-pos: center 70%;"
-        >
-          <img
-            src="./slide6.jpeg"
-            alt="Couple seated together in coordinated traditional clothing"
-            loading="lazy"
-            decoding="async"
-          >
-        </div>
+          <div class="slide-content">
+            <p class="slide-kicker">Commercial</p>
 
+            <h1>Visuals that make brands memorable.</h1>
+
+            <p>
+              Clean, expressive imagery created for brands,
+              campaigns and creative teams.
+            </p>
+          </div>
+        </article>
+
+        <div class="dots" aria-label="Hero slides">
+          <button class="dot active" type="button" aria-label="Show slide 1"></button>
+          <button class="dot" type="button" aria-label="Show slide 2"></button>
+          <button class="dot" type="button" aria-label="Show slide 3"></button>
+        </div>
       </div>
-
-      <div
-        class="slider-controls"
-        aria-label="Slideshow controls"
-      >
-
-        <button
-          class="slider-arrow"
-          type="button"
-          data-direction="prev"
-          aria-label="Previous photo"
-        >
-          ‹
-        </button>
-
-        <div
-          class="slide-dots"
-          role="group"
-          aria-label="Choose a photo"
-        ></div>
-
-        <span
-          class="slide-count"
-          aria-live="polite"
-        >
-          01 / 05
-        </span>
-
-        <button
-          class="slider-arrow"
-          type="button"
-          data-direction="next"
-          aria-label="Next photo"
-        >
-          ›
-        </button>
-
-      </div>
-
     </section>
 
-    <!-- =======================================================
+    <!-- =========================
          ABOUT
-    ======================================================== -->
+    ========================= -->
 
-    <section
-      class="intro wrap"
-      id="about"
-    >
+    <section class="wrap" id="about">
+      <div class="intro">
+        <div>
+          <p class="eyebrow">About the work</p>
 
-      <div data-stagger="left">
+          <h2>
+            Photography built around people, atmosphere and story.
+          </h2>
+        </div>
 
-        <img
-          src="./profile.jpeg"
-          alt="Portrait of Theophillus Atansuyi"
-          loading="lazy"
-          decoding="async">
+        <div class="intro-copy">
+          <p>
+            I create portrait, editorial and commercial photographs
+            with a focus on natural expression and thoughtful composition.
+          </p>
 
+          <p>
+            My approach is collaborative and intentional — creating
+            photographs that feel personal while remaining visually
+            refined.
+          </p>
+        </div>
       </div>
-
-      <div class="intro-copy" data-stagger="up">
-
-        <h2 class="intro-title">
-          Hello!
-          <span>I’m Theophillus Atansuyi</span>
-        </h2>
-
-        <p>
-          I am a portrait, commercial, and editorial photographer
-          based in Lagos, Nigeria, dedicated to creating clean,
-          refined, timeless, and impactful imagery for individuals
-          and brands.
-        </p>
-
-        <p>
-          My approach is centered around understanding each
-          client’s unique vision, needs, and objectives. I work
-          closely with my clients throughout the creative process
-          to ensure every detail is thoughtfully considered.
-        </p>
-
-        <p>
-          Beyond delivering exceptional images, I am committed to
-          providing a seamless, enjoyable, and professional
-          experience. My goal is to create work that not only looks
-          beautiful but feels authentic, tells a story, communicates
-          purpose, and stands the test of time.
-        </p>
-
-        <button
-          class="button solid"
-          type="button"
-          data-open-contact
-        >
-          Say hi
-        </button>
-
-      </div>
-
     </section>
 
-    <!-- =======================================================
+    <!-- =========================
          SERVICES
-    ======================================================== -->
+    ========================= -->
 
-    <section
-      class="what-band"
-      aria-labelledby="what-title"
-    >
+    <section class="services wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What I photograph</p>
 
-      <div class="what wrap">
-
-        <h2 id="what-title" data-anim="up">
-          What I Photograph
-        </h2>
-
-        <div class="service-cards" data-stagger="up" data-cols="3">
-
-          <article class="service-card">
-
-            <div class="number">
-              01
-            </div>
-
-            <h3>
-              Corporate & Team Portraits
-            </h3>
-
-            <p>
-              Executives, branches and teams, shot in one consistent
-              house style.
-            </p>
-
-          </article>
-
-          <article class="service-card">
-
-            <div class="number">
-              02
-            </div>
-
-            <h3>
-              Studio Portraits & Product Photography
-            </h3>
-
-            <p>
-              Studio portraits and product shots that highlight the best features of each subject.
-            </p>
-
-          </article>
-
-          <article class="service-card">
-
-            <div class="number">
-              03
-            </div>
-
-            <h3>
-              Brand & Event Coverage
-            </h3>
-
-            <p>
-              Launches, conferences and campaigns, delivered fast
-              and usage-ready.
-            </p>
-
-          </article>
-
+          <h2>Selected services</h2>
         </div>
 
+        <p>
+          From individual portraits to larger creative campaigns,
+          every shoot is approached with the same attention to
+          story and detail.
+        </p>
       </div>
 
+      <div class="service-cards">
+
+        <article class="service-card">
+          <span class="service-number">01</span>
+
+          <h3>Portraits</h3>
+
+          <p>
+            Personal portraits, professional headshots and
+            creative sessions built around authentic expression.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-number">02</span>
+
+          <h3>Editorial</h3>
+
+          <p>
+            Fashion, lifestyle and visual storytelling for
+            publications, creative projects and independent work.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <span class="service-number">03</span>
+
+          <h3>Commercial</h3>
+
+          <p>
+            Brand photography and campaign imagery designed
+            to communicate clearly and leave an impression.
+          </p>
+        </article>
+
+      </div>
     </section>
 
-    <!-- =======================================================
+    <!-- =========================
          PORTFOLIO
-    ======================================================== -->
+    ========================= -->
 
-    <section
-      class="portfolio"
-      id="portfolio"
-    >
+    <section class="portfolio wrap" id="portfolio">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Selected work</p>
 
-      <div class="wrap">
-
-        <div class="section-head">
-
-          <div data-anim="left">
-
-            <div class="eyebrow">
-              Selected stories
-            </div>
-
-            <h2>
-              Work in focus
-            </h2>
-
-          </div>
-
-          <div
-            class="filters"
-            role="group"
-            aria-label="Filter portfolio"
-            data-anim="right"
-            data-delay="0.15"
-          >
-
-            <button
-              class="filter active"
-              type="button"
-              data-filter="all"
-            >
-              All work
-            </button>
-
-            <button
-              class="filter"
-              type="button"
-              data-filter="editorial"
-            >
-              Editorial
-            </button>
-
-            <button
-              class="filter"
-              type="button"
-              data-filter="fashion"
-            >
-              Fashion
-            </button>
-
-            <button
-              class="filter"
-              type="button"
-              data-filter="portrait"
-            >
-              Portrait
-            </button>
-
-            <button
-              class="filter"
-              type="button"
-              data-filter="product"
-            >
-              Product
-            </button>
-
-          </div>
-
+          <h2>Portfolio</h2>
         </div>
 
-        <div class="grid" data-stagger="zoom" data-cols="2">
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="editorial"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1502955422409-06e43fd3eff3?auto=format&fit=crop&w=1300&q=85"
-              alt="Bride in a flowing dress in a sunlit field"
-            >
-
-            <div class="card-caption">
-              <small>
-                Editorial · 2025
-              </small>
-
-              <h3>
-                Soft light, lasting feeling
-              </h3>
-            </div>
-          </a>
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="fashion"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1100&q=85"
-              alt="Expressive fashion portrait in natural light"
-            >
-
-            <div class="card-caption">
-              <small>
-                Fashion · Lagos
-              </small>
-
-              <h3>
-                Quiet confidence
-              </h3>
-            </div>
-          </a>
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="portrait"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&q=85"
-              alt="Warm close-up portrait of a woman"
-            >
-
-            <div class="card-caption">
-              <small>
-                Portrait · 2025
-              </small>
-
-              <h3>
-                Seen in a new light
-              </h3>
-            </div>
-          </a>
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="editorial"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1300&q=85"
-              alt="Couple celebrating together outdoors"
-            >
-
-            <div class="card-caption">
-              <small>
-                Editorial · Celebration
-              </small>
-
-              <h3>
-                The in-between moments
-              </h3>
-            </div>
-          </a>
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="product"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1100&q=85"
-              alt="Minimal watch photographed as a product still life"
-            >
-
-            <div class="card-caption">
-              <small>
-                Product · Studio
-              </small>
-
-              <h3>
-                Made to be noticed
-              </h3>
-            </div>
-          </a>
-
-        </div>
-
+        <p>
+          A selection of portraits, editorial moments and
+          commercial imagery.
+        </p>
       </div>
 
+      <div class="grid">
+
+        <article class="work-card">
+          <img
+            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1500&q=85"
+            alt="Fashion portrait"
+            loading="lazy"
+          >
+
+          <div class="work-overlay">
+            <div class="work-meta">
+              <small>Editorial</small>
+              <h3>Quiet confidence</h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=85"
+            alt="Male portrait"
+            loading="lazy"
+          >
+
+          <div class="work-overlay">
+            <div class="work-meta">
+              <small>Portrait</small>
+              <h3>In focus</h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=85"
+            alt="Woman portrait"
+            loading="lazy"
+          >
+
+          <div class="work-overlay">
+            <div class="work-meta">
+              <small>Portrait</small>
+              <h3>Natural light</h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img
+            src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1500&q=85"
+            alt="Editorial portrait"
+            loading="lazy"
+          >
+
+          <div class="work-overlay">
+            <div class="work-meta">
+              <small>Editorial</small>
+              <h3>Between moments</h3>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <img
+            src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&q=85"
+            alt="Creative portrait"
+            loading="lazy"
+          >
+
+          <div class="work-overlay">
+            <div class="work-meta">
+              <small>Commercial</small>
+              <h3>Character</h3>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </section>
 
-    <!-- =======================================================
-         STATEMENT
-    ======================================================== -->
+    <!-- =========================
+         PROCESS
+    ========================= -->
 
-    <section class="statement">
+    <section class="process wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The experience</p>
 
-      <div class="eyebrow" data-anim="up">
-        The heart of the work
+          <h2>Simple, intentional, collaborative.</h2>
+        </div>
+
+        <p>
+          Every project begins with understanding what you want
+          the photographs to communicate.
+        </p>
       </div>
 
-      <blockquote id="quote" data-anim="words">
-        A moment means little if it cannot be felt beyond my
-        eyes. So I tell stories, capturing what I see in a way
-        that allows you to feel it, too.
-      </blockquote>
+      <div class="steps">
 
-      <div class="byline" data-anim="up" data-delay="1.6">
-        Theophillus Atansuyi · Photographer
+        <article class="step">
+          <span class="step-number">01</span>
+
+          <h3>Connect</h3>
+
+          <p>
+            We talk about your ideas, references, location
+            and what you want from the session.
+          </p>
+        </article>
+
+        <article class="step">
+          <span class="step-number">02</span>
+
+          <h3>Plan</h3>
+
+          <p>
+            We shape the visual direction, wardrobe,
+            location and practical details.
+          </p>
+        </article>
+
+        <article class="step">
+          <span class="step-number">03</span>
+
+          <h3>Create</h3>
+
+          <p>
+            The session stays relaxed and focused so the
+            strongest moments can happen naturally.
+          </p>
+        </article>
+
+        <article class="step">
+          <span class="step-number">04</span>
+
+          <h3>Deliver</h3>
+
+          <p>
+            You receive carefully selected and edited images
+            ready to use, share or publish.
+          </p>
+        </article>
+
       </div>
-
     </section>
 
   </main>
 
-  <!-- =========================================================
-       FOOTER
-  ========================================================= -->
+  <!-- =========================
+       FOOTER / CONTACT
+  ========================= -->
 
   <footer class="site-footer" id="contact">
-
     <div class="wrap">
 
       <div class="footer-top">
 
-        <div class="footer-cta" data-stagger="up">
+        <div class="footer-copy">
+          <p class="eyebrow">Let's work together</p>
 
-          <h2>Let’s work together</h2>
-
-          <p>
-            Tell me about your project and I’ll get back to you.
-            You can also reach me on any of these.
-          </p>
-
-          <button
-            class="button solid"
-            type="button"
-            data-open-contact
-          >
-            Say hi
-          </button>
-
+          <h2>
+            Have a story worth photographing?
+          </h2>
         </div>
 
-        <div class="footer-reach" data-anim="up" data-delay="0.2">
-
-          <h3>Find me on</h3>
+        <div class="footer-contact">
+          <p>
+            Tell me a little about your project, idea or
+            upcoming shoot. I would love to hear from you.
+          </p>
 
           <div class="social-links">
 
             <a
               class="social"
-              href="https://www.instagram.com/theo.shuttervision/?hl=en"
+              href="https://instagram.com/"
               target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
+              rel="noopener noreferrer"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r="0.7" fill="currentColor"></circle>
               </svg>
+
               Instagram
             </a>
 
             <a
               class="social"
-              href="https://wa.me/2347011791265"
+              href="https://wa.me/"
               target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
+              rel="noopener noreferrer"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
-                <g transform="translate(5.7 5.5) scale(0.52)">
-                  <path stroke-width="3.2" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </g>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+              >
+                <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z"></path>
+                <path d="M8.5 8.5c.2-.5.5-.5.8-.5h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.5.6c.8 1.2 1.7 1.9 3 2.4l.5-.7c.2-.2.4-.2.7-.1l1.5.7c.3.1.4.3.3.6-.2.7-.8 1.4-1.5 1.6-1 .3-3.1-.6-4.8-2.2-1.4-1.3-2.1-2.7-2.3-3.6-.1-.5.1-1.1.7-1.4Z"></path>
               </svg>
+
               WhatsApp
             </a>
-            <a
-  class="social"
-  type="button"
-  data-open-contact
-  aria-label="Send an email"
->
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <rect x="2" y="4" width="20" height="16" rx="2"/>
-    <path d="m22 7-10 5L2 7"/>
-  </svg>
-  Email
-</a>
+
+            <button
+              class="social"
+              id="contact-open"
+              type="button"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+              >
+                <path d="M4 5h16v14H4z"></path>
+                <path d="m4 6 8 6 8-6"></path>
+              </svg>
+
+              Email
+            </button>
 
           </div>
-
         </div>
 
       </div>
 
       <div class="footer-bottom">
-
-        <a class="footer-brand" href="#home">
-          Theophillus Atansuyi
-        </a>
-
-        <div class="copy">
-          © <span id="year"></span>
-          Theophillus Atansuyi · Lagos, Nigeria
-        </div>
-
+        <span>© 2026 Theophillus Atansuyi</span>
+        <span>Lagos, Nigeria</span>
       </div>
 
     </div>
-
   </footer>
 
-  <!-- =========================================================
-       CONTACT POP-UP
-  ========================================================= -->
+  <!-- =========================
+       CONTACT MODAL
+  ========================= -->
 
   <div
     class="modal"
     id="contact-modal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="contact-title"
     aria-hidden="true"
   >
-
-    <div class="modal-backdrop" data-close></div>
-
-    <div class="modal-card">
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-title"
+    >
 
       <div class="modal-head">
-
         <div>
-          <h2 id="contact-title">Say hi to Theophillus</h2>
-          <p>Tell me about your project and I’ll get back to you.</p>
+          <p class="eyebrow">Get in touch</p>
+
+          <h2 id="contact-title">
+            Start a conversation.
+          </h2>
+
+          <p>
+            Tell me about your project and I will get back to you.
+          </p>
         </div>
 
         <button
           class="modal-close"
+          id="contact-close"
           type="button"
-          aria-label="Close"
-          data-close
+          aria-label="Close contact form"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 6 6 18"/>
-            <path d="m6 6 12 12"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+          >
+            <path d="M6 6l12 12"></path>
+            <path d="M18 6 6 18"></path>
           </svg>
         </button>
-
       </div>
 
       <form class="contact-form" id="contact-form">
@@ -2230,24 +1843,24 @@
         <div class="field-row">
 
           <div class="field">
-            <label for="cf-name">Your name</label>
+            <label for="cf-name">Name</label>
+
             <input
               id="cf-name"
               name="name"
               type="text"
-              placeholder="Your name"
               autocomplete="name"
               required
             >
           </div>
 
           <div class="field">
-            <label for="cf-email">Your email</label>
+            <label for="cf-email">Email</label>
+
             <input
               id="cf-email"
               name="email"
               type="email"
-              placeholder="you@example.com"
               autocomplete="email"
               required
             >
@@ -2256,579 +1869,178 @@
         </div>
 
         <div class="field">
-          <label for="cf-message">Your message</label>
+          <label for="cf-message">Message</label>
+
           <textarea
             id="cf-message"
             name="message"
-            placeholder="Tell me about your project, preferred date and location."
             required
           ></textarea>
         </div>
 
-        <!-- spam trap: real visitors never see or fill this -->
         <input
           class="honey"
           type="text"
           name="_honey"
           tabindex="-1"
           autocomplete="off"
-          aria-hidden="true"
         >
 
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <div class="form-actions">
 
-        <button class="send" id="send-btn" type="submit">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="m22 2-7 20-4-9-9-4Z"/>
-            <path d="M22 2 11 13"/>
-          </svg>
-          <span>Send message</span>
-        </button>
+          <div
+            class="form-status"
+            id="form-status"
+            aria-live="polite"
+          ></div>
 
-        <p class="form-note">Your message goes straight to Theophillus’s inbox.</p>
+          <button
+            class="send-btn"
+            id="send-btn"
+            type="submit"
+          >
+            <span id="send-label">Send message</span>
+          </button>
+
+        </div>
 
       </form>
 
-      <div class="modal-success" role="status">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="m9 12 2 2 4-4"/>
-        </svg>
-        <h3>Message sent</h3>
-        <p>Thanks for reaching out. I’ll get back to you soon.</p>
-        <button class="button solid" type="button" data-close>Close</button>
+      <div class="sent-message">
+        <h3>Message sent.</h3>
+
+        <p>
+          Thank you for reaching out. Your enquiry has been
+          sent successfully. I will get back to you soon.
+        </p>
       </div>
 
     </div>
-
   </div>
 
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================= -->
-
   <script>
+    /* =========================
+       MOBILE NAVIGATION
+    ========================= */
 
-    /* =========================================================
-       SETTINGS
-       ▸ CONTACT_EMAIL is where every message from the form is
-         delivered. Put your client's real email address here.
-    ========================================================= */
+    const menuToggle = document.getElementById("menu-toggle");
+    const mainNav = document.getElementById("main-nav");
 
-    const CONTACT_EMAIL = "theoatansuyi@gmail.com";
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
 
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+    });
 
-    /* =========================================================
-       SLIDESHOW
-    ========================================================= */
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
 
-    const hero = document.querySelector(".hero");
+    /* =========================
+       HERO SLIDESHOW
+    ========================= */
 
-    const slides = [
-      ...document.querySelectorAll(".slide")
-    ];
+    const slides = Array.from(
+      document.querySelectorAll(".slide")
+    );
 
-    const dots = document.querySelector(".slide-dots");
-
-    const counter = document.querySelector(".slide-count");
-
-    const SLIDE_DELAY = 1500;
+    const dots = Array.from(
+      document.querySelectorAll(".dot")
+    );
 
     let currentSlide = 0;
 
-    let slideTimer;
+    function showSlide(index) {
+      currentSlide = index;
 
-    slides.forEach((slide, index) => {
-
-      const dot = document.createElement("button");
-
-      dot.type = "button";
-
-      dot.className = "slide-dot";
-
-      dot.setAttribute(
-        "aria-label",
-        `Show photo ${index + 1}`
-      );
-
-      dot.setAttribute(
-        "aria-current",
-        index === 0 ? "true" : "false"
-      );
-
-      dot.addEventListener(
-        "click",
-        () => showSlide(index, true)
-      );
-
-      dots.append(dot);
-
-    });
-
-    function showSlide(index, resetTimer = false) {
-
-      currentSlide =
-        (index + slides.length) % slides.length;
-
-      slides.forEach((slide, i) => {
-
+      slides.forEach((slide, slideIndex) => {
         slide.classList.toggle(
-          "is-active",
-          i === currentSlide
+          "active",
+          slideIndex === currentSlide
         );
-
       });
 
-      [
-        ...dots.children
-      ].forEach((dot, i) => {
-
-        dot.setAttribute(
-          "aria-current",
-          i === currentSlide ? "true" : "false"
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle(
+          "active",
+          dotIndex === currentSlide
         );
-
       });
-
-      counter.textContent =
-        `${String(currentSlide + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
-
-      if (resetTimer) {
-        startSlideTimer();
-      }
     }
 
-    function startSlideTimer() {
-
-      clearInterval(slideTimer);
-
-      slideTimer = setInterval(() => {
-
-        showSlide(currentSlide + 1);
-
-      }, SLIDE_DELAY);
-
-    }
-
-    document
-      .querySelectorAll(".slider-arrow")
-      .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-          showSlide(
-            currentSlide +
-              (
-                button.dataset.direction === "next"
-                  ? 1
-                  : -1
-              ),
-            true
-          );
-
-        });
-
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showSlide(index);
       });
-
-    let touchStartX = null;
-
-    hero.addEventListener(
-      "touchstart",
-      event => {
-        touchStartX = event.touches[0].clientX;
-      },
-      { passive: true }
-    );
-
-    hero.addEventListener("touchend", event => {
-
-      if (touchStartX === null) return;
-
-      const distance =
-        event.changedTouches[0].clientX - touchStartX;
-
-      if (Math.abs(distance) > 50) {
-        showSlide(
-          currentSlide + (distance < 0 ? 1 : -1),
-          true
-        );
-      }
-
-      touchStartX = null;
-
     });
 
-    startSlideTimer();
-
-
-    /* =========================================================
-       SCROLL ANIMATIONS
-    ========================================================= */
-
-    const quote = document.querySelector("#quote");
-
-    if (quote) {
-
-      const words = quote.textContent.trim().split(/\s+/);
-
-      quote.setAttribute("aria-label", words.join(" "));
-
-      quote.textContent = "";
-
-      words.forEach((word, i) => {
-
-        const span = document.createElement("span");
-
-        span.className = "w";
-
-        span.setAttribute("aria-hidden", "true");
-
-        span.style.setProperty("--wd", `${i * 0.06}s`);
-
-        span.textContent = word;
-
-        quote.append(span, " ");
-
-      });
-
-    }
-
-    document
-      .querySelectorAll("[data-stagger]")
-      .forEach(parent => {
-
-        const cols = parseInt(parent.dataset.cols, 10) || 99;
-
-        [...parent.children].forEach((child, i) => {
-
-          if (!child.hasAttribute("data-anim")) {
-            child.setAttribute(
-              "data-anim",
-              parent.dataset.stagger || "up"
-            );
-          }
-
-          child.style.setProperty(
-            "--d",
-            `${(i % cols) * 0.12}s`
-          );
-
-        });
-
-      });
-
-    document
-      .querySelectorAll("[data-delay]")
-      .forEach(el => {
-        el.style.setProperty("--d", `${el.dataset.delay}s`);
-      });
-
-    const settleTimers = new WeakMap();
-
-    function settle(el) {
-
-      clearTimeout(settleTimers.get(el));
-
-      const delay =
-        parseFloat(el.style.getPropertyValue("--d")) || 0;
-
-      settleTimers.set(
-        el,
-        setTimeout(
-          () => el.classList.add("settled"),
-          (delay + 1) * 1000 + 300
-        )
+    setInterval(() => {
+      showSlide(
+        (currentSlide + 1) % slides.length
       );
-
-    }
-
-    function reveal(el) {
-
-      if (el.classList.contains("in")) return;
-
-      el.classList.add("in");
-
-      settle(el);
-
-    }
-
-    function reset(el) {
-
-      clearTimeout(settleTimers.get(el));
-
-      el.classList.remove("in", "settled");
-
-    }
-
-    const animTargets =
-      document.querySelectorAll("[data-anim]");
-
-    if (
-      "IntersectionObserver" in window &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-
-      const revealObserver = new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (entry.intersectionRatio >= 0.1) {
-
-              reveal(entry.target);
-
-            } else if (!entry.isIntersecting) {
-
-              reset(entry.target);
-
-            }
-
-          });
-
-        },
-        {
-          threshold: [0, 0.1],
-          rootMargin: "0px 0px -30px 0px"
-        }
-      );
-
-      animTargets.forEach(el => revealObserver.observe(el));
-
-    } else {
-
-      animTargets.forEach(el => el.classList.add("in", "settled"));
-
-    }
-
-
-    /* =========================================================
-       HEADER + SCROLL PROGRESS
-    ========================================================= */
-
-    const topbar = document.querySelector(".topbar");
-
-    const progress = document.querySelector(".progress");
-
-    let ticking = false;
-
-    function onScroll() {
-
-      const scrollTop = window.scrollY;
-
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-      progress.style.transform =
-        `scaleX(${maxScroll > 0 ? scrollTop / maxScroll : 0})`;
-
-      topbar.classList.toggle("scrolled", scrollTop > 20);
-
-      ticking = false;
-
-    }
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!ticking) {
-          requestAnimationFrame(onScroll);
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
-
-    onScroll();
-
-
-    /* =========================================================
-       PORTFOLIO FILTERS
-    ========================================================= */
-
-    const filters =
-      document.querySelectorAll(".filter");
-
-    const cards =
-      document.querySelectorAll(".work-card");
-
-    filters.forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          filters.forEach(item => {
-
-            item.classList.remove(
-              "active"
-            );
-
-          });
-
-          button.classList.add("active");
-
-          const selected =
-            button.dataset.filter;
-
-          const visible = [];
-
-          cards.forEach(card => {
-
-            const shouldHide =
-              selected !== "all" &&
-              card.dataset.category !== selected;
-
-            card.hidden = shouldHide;
-
-            if (!shouldHide) visible.push(card);
-
-          });
-
-          visible.forEach((card, i) => {
-
-            card.classList.remove("in", "settled");
-
-            card.style.setProperty("--d", `${i * 0.1}s`);
-
-            void card.offsetWidth;
-
-            reveal(card);
-
-          });
-
-        }
-      );
-
-    });
-
-
-    /* =========================================================
-       CONTACT POP-UP + EMAIL FORM
-    ========================================================= */
-
-    const modal = document.querySelector("#contact-modal");
-
-    const modalCard = modal.querySelector(".modal-card");
-
-    const form = document.querySelector("#contact-form");
-
-    const statusBox = document.querySelector("#form-status");
-
-    const sendBtn = document.querySelector("#send-btn");
-
-    const sendLabel = sendBtn.querySelector("span");
-
-    let lastFocused = null;
+    }, 6000);
+
+    /* =========================
+       CONTACT MODAL
+    ========================= */
+
+    const modal = document.getElementById("contact-modal");
+    const openContact = document.getElementById("contact-open");
+    const closeContact = document.getElementById("contact-close");
 
     function openModal() {
-
-      lastFocused = document.activeElement;
-
-      if (modal.classList.contains("sent")) {
-        modal.classList.remove("sent");
-        form.reset();
-      }
-
-      statusBox.textContent = "";
-
       modal.classList.add("open");
-
       modal.setAttribute("aria-hidden", "false");
-
-      document.body.classList.add("modal-open");
-
-      setTimeout(
-        () => form.elements.name.focus(),
-        120
-      );
-
+      document.body.style.overflow = "hidden";
     }
 
     function closeModal() {
-
       modal.classList.remove("open");
-
       modal.setAttribute("aria-hidden", "true");
-
-      document.body.classList.remove("modal-open");
-
-      if (lastFocused) lastFocused.focus();
-
+      document.body.style.overflow = "";
     }
 
-    document
-      .querySelectorAll('[data-open-contact]')
-      .forEach(el => {
+    openContact.addEventListener("click", openModal);
 
-        el.addEventListener("click", event => {
+    closeContact.addEventListener("click", closeModal);
 
-          event.preventDefault();
-
-          openModal();
-
-        });
-
-      });
-
-    modal
-      .querySelectorAll("[data-close]")
-      .forEach(el => el.addEventListener("click", closeModal));
-
-    document.addEventListener("keydown", event => {
-
-      if (!modal.classList.contains("open")) return;
-
-      if (event.key === "Escape") {
+    modal.addEventListener("click", event => {
+      if (event.target === modal) {
         closeModal();
-        return;
       }
-
-      if (event.key === "Tab") {
-
-        const focusable = [
-          ...modalCard.querySelectorAll(
-            "button, a[href], input, select, textarea"
-          )
-        ].filter(el =>
-          !el.disabled &&
-          el.tabIndex !== -1 &&
-          el.offsetParent !== null
-        );
-
-        if (!focusable.length) return;
-
-        const first = focusable[0];
-
-        const last = focusable[focusable.length - 1];
-
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-
-      }
-
     });
 
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    });
 
-    /* =========================================================
-       CONTACT FORM SUBMISSION
-    ========================================================= */
+    /* =========================
+       CONTACT FORM
+    ========================= */
+
+    const CONTACT_EMAIL = "theoatansuyi@gmail.com";
+
+    const form = document.getElementById("contact-form");
+    const statusBox = document.getElementById("form-status");
+    const sendBtn = document.getElementById("send-btn");
+    const sendLabel = document.getElementById("send-label");
 
     form.addEventListener("submit", async event => {
-
       event.preventDefault();
 
-      /* The hidden spam-trap field was filled: it's a bot. */
       if (form.elements._honey.value) return;
 
       statusBox.textContent = "";
 
       if (CONTACT_EMAIL.includes("YOUR-CLIENT")) {
-
         console.warn(
           "Set CONTACT_EMAIL in the script to your client's email address."
         );
@@ -2837,15 +2049,12 @@
           "This form isn't connected to an email address yet.";
 
         return;
-
       }
 
       sendBtn.disabled = true;
-
       sendLabel.textContent = "Sending…";
 
       try {
-
         const response = await fetch(
           `https://formsubmit.co/ajax/${CONTACT_EMAIL}`,
           {
@@ -2855,22 +2064,15 @@
               "Content-Type": "application/json",
               "Accept": "application/json"
             },
-            
 
             body: JSON.stringify({
+              name: form.elements.name.value.trim(),
 
-              name:
-                form.elements.name.value.trim(),
+              email: form.elements.email.value.trim(),
 
-              email:
-                form.elements.email.value.trim(),
+              message: form.elements.message.value.trim(),
 
-              message:
-                form.elements.message.value.trim(),
-
-              /* Lets Theophillus reply directly to the visitor. */
-              _replyto:
-                form.elements.email.value.trim(),
+              _replyto: form.elements.email.value.trim(),
 
               _subject:
                 `New photography enquiry from ${form.elements.name.value.trim()}`,
@@ -2878,7 +2080,6 @@
               _template: "table",
 
               _captcha: "false"
-
             })
           }
         );
@@ -2887,7 +2088,10 @@
 
         if (
           !response.ok ||
-          (result.success !== "true" && result.success !== true)
+          (
+            result.success !== "true" &&
+            result.success !== true
+          )
         ) {
           throw new Error(
             result.message || "Request failed"
@@ -2899,91 +2103,17 @@
         form.reset();
 
       } catch (error) {
+        console.error(error);
 
-  console.error(error);
+        statusBox.textContent =
+          "Couldn't send: " + error.message;
 
-  statusBox.textContent = "Couldn't send: " + error.message;
-
-} finally {
-
+      } finally {
         sendBtn.disabled = false;
-
         sendLabel.textContent = "Send message";
-
       }
-
     });
-
-
-    /* =========================================================
-       MOBILE MENU
-    ========================================================= */
-
-    const menu =
-      document.querySelector(".menu");
-
-    const nav =
-      document.querySelector(".nav");
-
-    menu.addEventListener(
-      "click",
-      () => {
-
-        const open =
-          nav.classList.toggle("open");
-
-        menu.setAttribute(
-          "aria-expanded",
-          String(open)
-        );
-
-        menu.setAttribute(
-          "aria-label",
-          open
-            ? "Close navigation"
-            : "Open navigation"
-        );
-
-      }
-    );
-
-    nav
-      .querySelectorAll("a")
-      .forEach(link => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            nav.classList.remove(
-              "open"
-            );
-
-            menu.setAttribute(
-              "aria-expanded",
-              "false"
-            );
-
-            menu.setAttribute(
-              "aria-label",
-              "Open navigation"
-            );
-
-          }
-        );
-
-      });
-
-
-    /* =========================================================
-       CURRENT YEAR
-    ========================================================= */
-
-    document.querySelector("#year").textContent =
-      new Date().getFullYear();
-
   </script>
 
 </body>
-
 </html>
