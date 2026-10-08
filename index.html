@@ -1,0 +1,2991 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ece9e6">
+  <meta
+    name="description"
+    content="Portrait, editorial and commercial photography by Theophillus Atansuyi, based in Lagos, Nigeria."
+  >
+
+  <title>Theophillus Atansuyi — Photographer & Visual Storyteller</title>
+
+  <link rel="preload" as="image" href="./slide7.jpeg" fetchpriority="high">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --paper: #ece9e6;
+      --paper-2: #f4f1ee;
+      --ink: #282623;
+      --muted: #706a64;
+      --taupe: #a48160;
+      --slate: #abb2ba;
+      --slate-soft: #d9dce0;
+      --line: #d3cbc3;
+      --white: #fffdfa;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', Arial, sans-serif;
+      --wide: 1320px;
+      --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+      --dots-space: 58px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    ::selection {
+      background: var(--slate);
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(var(--wide), calc(100% - 9vw));
+      margin: auto;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--taupe);
+    }
+
+    /* =========================================================
+       SCROLL PROGRESS BAR
+    ========================================================= */
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--taupe), var(--slate));
+      transform: scaleX(0);
+      transform-origin: left;
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .topbar {
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(40, 38, 35, 0.12);
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0 4.5vw;
+      color: var(--ink);
+      background: rgba(236, 233, 230, 0.97);
+      backdrop-filter: blur(12px);
+      animation: dropIn 0.9s var(--ease) backwards;
+      transition: box-shadow 0.35s;
+    }
+
+    .topbar.scrolled {
+      box-shadow: 0 8px 30px rgba(40, 38, 35, 0.08);
+    }
+
+    @keyframes dropIn {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-size: 0.82rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .brand-mark {
+      height: 39px;
+      width: 39px;
+      border: 1px solid rgba(40, 38, 35, 0.65);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: -0.05em;
+      transition:
+        background 0.3s,
+        color 0.3s,
+        transform 0.5s var(--ease);
+    }
+
+    .brand:hover .brand-mark {
+      background: var(--ink);
+      color: var(--paper);
+      transform: rotate(360deg);
+    }
+
+    .nav {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      font-size: 0.73rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      opacity: 0.86;
+      transition: opacity 0.2s;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 1px;
+      background: var(--taupe);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s var(--ease);
+    }
+
+    .nav a:hover {
+      opacity: 1;
+    }
+
+    .nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      border: 0;
+      color: inherit;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    main {
+      padding-top: 88px;
+    }
+
+    /* =========================================================
+       HERO / SLIDESHOW
+    ========================================================= */
+
+    .hero {
+      height: calc(100svh - 88px);
+      min-height: 440px;
+      position: relative;
+      color: var(--ink);
+      background: #262220;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: heroIn 1.4s ease backwards;
+    }
+
+    @keyframes heroIn {
+      from {
+        opacity: 0;
+      }
+    }
+
+    .slides {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      background: #262220;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.85s ease,
+        visibility 0.85s ease;
+      overflow: hidden;
+      background: #262220;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background-image: var(--slide-background);
+      background-size: cover;
+      background-position: center;
+      filter: blur(30px) saturate(1.1);
+      transform: scale(1.12);
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 17, 15, 0.12);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .slide.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slide img {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - var(--dots-space));
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      transform: scale(1);
+      transition: transform 8s ease-out;
+    }
+
+    .slide.is-active img {
+      transform: scale(1.035);
+    }
+
+    /* @media (min-width: 851px) {
+
+      :root {
+        --dots-space: 0px;
+      }
+
+      .slide img {
+        display: none;
+      }
+
+      .slide::before {
+        inset: 0;
+        filter: none;
+        opacity: 1;
+        background-size: cover;
+        background-position: var(--slide-pos, center 30%);
+        transform: scale(1);
+        transition: transform 8s ease-out;
+      }
+
+      .slide.is-active::before {
+        transform: scale(1.05);
+      }
+
+    } */
+
+    /* =========================================================
+       SLIDESHOW CONTROLS
+    ========================================================= */
+
+    .slider-controls {
+      position: absolute;
+      inset: 0;
+      height: auto;
+      flex: auto;
+      display: block;
+      background: transparent;
+      border: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: calc(50% - (var(--dots-space) / 2));
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      font-size: 2.2rem;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      pointer-events: auto;
+      opacity: 0.16;
+      text-shadow: 0 0 14px rgba(0, 0, 0, 0.45);
+      transition:
+        opacity 0.3s,
+        background 0.3s,
+        transform 0.3s;
+    }
+
+    .hero:hover .slider-arrow {
+      opacity: 0.3;
+    }
+
+    .slider-arrow:hover,
+    .slider-arrow:focus-visible {
+      opacity: 0.95;
+      background: rgba(35, 31, 29, 0.28);
+    }
+
+    .slider-arrow:active {
+      transform: translateY(-50%) scale(0.92);
+    }
+
+    .slider-arrow[data-direction="prev"] {
+      left: clamp(10px, 2.5vw, 36px);
+    }
+
+    .slider-arrow[data-direction="next"] {
+      right: clamp(10px, 2.5vw, 36px);
+    }
+
+    @media (hover: none) {
+      .slider-arrow {
+        opacity: 0.22;
+      }
+    }
+
+    .slide-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: auto;
+      padding: 10px 14px;
+      border-radius: 99px;
+      background: rgba(35, 31, 29, 0.55);
+      backdrop-filter: blur(6px);
+    }
+
+    .slide-dot {
+      width: 8px;
+      height: 8px;
+      border: 0;
+      border-radius: 50%;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.55);
+      cursor: pointer;
+      transition:
+        width 0.35s var(--ease),
+        background 0.25s;
+    }
+
+    .slide-dot:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .slide-dot[aria-current="true"] {
+      width: 26px;
+      border-radius: 9px;
+      background: #fff;
+    }
+
+    .slide-count {
+      display: none;
+    }
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 22px;
+      border: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      padding: 15px 20px;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      transition:
+        background 0.25s,
+        color 0.25s,
+        gap 0.35s var(--ease);
+    }
+
+    .button.solid {
+      background: var(--white);
+      color: var(--ink);
+      border-color: var(--ink);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      gap: 0;
+      padding: 20px 56px;
+    }
+
+    .button.solid:hover {
+      background: var(--slate);
+      color: var(--white);
+      border-color: var(--ink);
+    }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .intro {
+      padding: 110px 0 120px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(40px, 9vw, 150px);
+      align-items: center;
+    }
+
+    .intro > div:first-child img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 19 / 20;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+
+    .intro-copy {
+      padding: 0;
+    }
+
+    .intro .intro-title {
+      font: 500 clamp(3rem, 5vw, 4.5rem) / 1 var(--serif);
+      letter-spacing: -0.035em;
+      margin: 0 0 clamp(40px, 6vw, 80px);
+    }
+
+    .intro .intro-title span {
+      display: block;
+      font-size: 0.52em;
+      letter-spacing: -0.02em;
+      margin-top: 0.25em;
+    }
+
+    .intro-copy p {
+      font-size: 1rem;
+      line-height: 1.95;
+      color: #4a4642;
+      margin: 0 0 30px;
+      max-width: 620px;
+    }
+
+    .intro .button.solid {
+      margin-top: 28px;
+    }
+
+    /* =========================================================
+       WHAT I PHOTOGRAPH
+    ========================================================= */
+
+    .what-band {
+      background: var(--slate);
+      padding: 105px 0 115px;
+    }
+
+    .what h2 {
+      font: 600 clamp(2.8rem, 5vw, 4.4rem) / 1 var(--serif);
+      letter-spacing: -0.04em;
+      margin: 0 0 52px;
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .service-card {
+      background: #f4f3f0;
+      padding: 34px 30px 38px;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+      transition:
+        box-shadow 0.4s,
+        opacity 0.9s ease,
+        transform 0.9s var(--ease);
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: var(--slate);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .service-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .service-card.settled:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 40px rgba(40, 38, 35, 0.14);
+    }
+
+    .service-card .number {
+      font: 500 3rem / 1 var(--serif);
+      color: var(--taupe);
+      display: inline-block;
+      transform: translateX(-16px);
+      opacity: 0;
+      transition:
+        transform 0.8s var(--ease) 0.25s,
+        opacity 0.8s ease 0.25s;
+    }
+
+    .service-card.in .number {
+      transform: none;
+      opacity: 1;
+    }
+
+    .service-card h3 {
+      font-size: 1.45rem;
+      line-height: 1.4;
+      margin: 34px 0 22px;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* =========================================================
+       PORTFOLIO
+    ========================================================= */
+
+    .portfolio {
+      padding: 105px 0 120px;
+      background: var(--paper-2);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 38px;
+    }
+
+    .section-head h2 {
+      font: 500 clamp(2.6rem, 5vw, 5rem) / 1 var(--serif);
+      letter-spacing: -0.04em;
+      margin: 15px 0 0;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .filter {
+      border: 1px solid var(--slate);
+      background: transparent;
+      color: var(--muted);
+      border-radius: 99px;
+      padding: 10px 16px;
+      font-size: 0.69rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .filter:hover,
+    .filter.active {
+      background: var(--slate);
+      border-color: var(--slate);
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .work-card {
+      position: relative;
+      overflow: hidden;
+      background: #c8b8a7;
+      min-height: 310px;
+      grid-column: span 4;
+      isolation: isolate;
+    }
+
+    .work-card:nth-child(1),
+    .work-card:nth-child(4) {
+      grid-column: span 7;
+    }
+
+    .work-card:nth-child(2),
+    .work-card:nth-child(5) {
+      grid-column: span 5;
+    }
+
+    .work-card:nth-child(3) {
+      grid-column: span 5;
+    }
+
+    .work-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+      z-index: -2;
+    }
+
+    .work-card::after {
+      content: "";
+      position: absolute;
+      inset: 35% 0 0;
+      background: linear-gradient(
+        transparent,
+        rgba(22, 19, 16, 0.62)
+      );
+      z-index: -1;
+    }
+
+    .work-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .work-card .card-caption {
+      position: absolute;
+      left: 25px;
+      bottom: 24px;
+      color: white;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .work-card:hover .card-caption {
+      transform: translateY(-6px);
+    }
+
+    .card-caption small {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #ead6c1;
+    }
+
+    .card-caption h3 {
+      font: 500 1.8rem var(--serif);
+      margin: 6px 0 0;
+    }
+
+    .work-card[hidden] {
+      display: none;
+    }
+
+    /* =========================================================
+       STATEMENT
+    ========================================================= */
+
+    .statement {
+      padding: 150px 0;
+      text-align: center;
+      background: var(--slate);
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    .statement .eyebrow {
+      color: #3c434b;
+    }
+
+    .statement blockquote {
+      font: 500 clamp(2.3rem, 5.5vw, 5.4rem) / 1.12 var(--serif);
+      font-style: italic;
+      letter-spacing: -0.035em;
+      margin: 25px auto 24px;
+      max-width: 970px;
+    }
+
+    .statement blockquote .w {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(26px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.8s var(--ease);
+      transition-delay: var(--wd, 0s);
+    }
+
+    .statement blockquote.in .w {
+      opacity: 1;
+      transform: none;
+    }
+
+    .statement .byline {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #3c434b;
+    }
+
+    /* =========================================================
+       PROCESS
+    ========================================================= */
+
+    .process {
+      padding: 130px 0 145px;
+    }
+
+    .process h2 {
+      font: 600 clamp(2.6rem, 5vw, 4.7rem) / 1 var(--serif);
+      letter-spacing: -0.04em;
+      margin: 0 0 75px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      background: var(--line);
+      top: 57px;
+      left: 139px;
+      right: -20px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1s var(--ease) 0.5s;
+    }
+
+    .step.in:not(:last-child)::after {
+      transform: scaleX(1);
+    }
+
+    .step-number {
+      width: 94px;
+      height: 94px;
+      border-radius: 50%;
+      background: var(--taupe);
+      display: grid;
+      place-items: center;
+      color: white;
+      font: 600 2rem var(--serif);
+      margin-bottom: 25px;
+      transform: scale(0.5);
+      transition: transform 0.8s var(--ease) 0.2s;
+    }
+
+    .step.in .step-number {
+      transform: scale(1);
+    }
+
+    .step h3 {
+      font-size: 1.25rem;
+      margin: 0 0 11px;
+    }
+
+    .step p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+      max-width: 250px;
+      margin: 0;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .site-footer {
+      background: #0d0d0d;
+      color: #fff;
+      padding: 100px 0 34px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(40px, 8vw, 120px);
+      align-items: end;
+      padding-bottom: 72px;
+    }
+
+    .footer-cta h2 {
+      font: 600 clamp(2.6rem, 5vw, 4.4rem) / 1.05 var(--serif);
+      letter-spacing: -0.04em;
+      margin: 0 0 18px;
+      color: #fff;
+    }
+
+    .footer-cta p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 440px;
+      margin: 0 0 34px;
+    }
+
+    .footer-reach h3 {
+      font-size: 0.72rem;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0 0 20px;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .social {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 22px 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 99px;
+      background: transparent;
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition:
+        background 0.25s,
+        color 0.25s,
+        border-color 0.25s,
+        transform 0.35s var(--ease);
+    }
+
+    .social svg {
+      width: 20px;
+      height: 20px;
+      flex: none;
+    }
+
+    .social:hover,
+    .social:focus-visible {
+      background: #fff;
+      border-color: #fff;
+      color: #0d0d0d;
+      transform: translateY(-4px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .footer-brand {
+      font: 500 1.2rem var(--serif);
+      color: #fff;
+    }
+
+    /* =========================================================
+       CONTACT POP-UP
+    ========================================================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      visibility: hidden;
+      opacity: 0;
+      transition:
+        opacity 0.35s ease,
+        visibility 0.35s;
+    }
+
+    .modal.open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-card {
+      position: relative;
+      width: min(640px, 100%);
+      max-height: calc(100svh - 40px);
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 30px 80px rgba(20, 17, 15, 0.35);
+      transform: translateY(26px) scale(0.96);
+      transition: transform 0.5s var(--ease);
+    }
+
+    .modal.open .modal-card {
+      transform: none;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 28px 30px 22px;
+      border-bottom: 1px solid #ebe8e4;
+    }
+
+    .modal-head h2 {
+      font: 600 1.6rem / 1.2 var(--serif);
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+
+    .modal-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .modal-close {
+      flex: none;
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: #7b838c;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition:
+        background 0.25s,
+        color 0.25s,
+        transform 0.4s var(--ease);
+    }
+
+    .modal-close:hover,
+    .modal-close:focus-visible {
+      background: var(--slate-soft);
+      color: var(--ink);
+      transform: rotate(90deg);
+    }
+
+    .modal-close svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .contact-form {
+      padding: 26px 30px 28px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      font: inherit;
+      font-size: 1rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #dcd8d3;
+      border-radius: 14px;
+      padding: 15px 18px;
+      outline: 0;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    }
+
+    .field textarea {
+      min-height: 130px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .field select {
+      appearance: none;
+      padding-right: 46px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23282623' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #9aa1a9;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--slate);
+      box-shadow: 0 0 0 4px rgba(133, 131, 130, 0.16);
+    }
+
+    .send {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 0;
+      border-radius: 14px;
+      padding: 17px 20px;
+      background: var(--slate);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition:
+        background 0.25s,
+        transform 0.25s;
+    }
+
+    .send:hover {
+      background: var(--ink);
+    }
+
+    .send:active {
+      transform: scale(0.99);
+    }
+
+    .send:disabled {
+      opacity: 0.7;
+      cursor: progress;
+    }
+
+    .send svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .form-status {
+      margin: -6px 0 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #a3392f;
+    }
+
+    .form-status:empty {
+      display: none;
+    }
+
+    .form-note {
+      margin: 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #8a9098;
+    }
+
+    .honey {
+      position: absolute;
+      left: -9999px;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    .modal-success {
+      display: none;
+      padding: 54px 30px 48px;
+      text-align: center;
+    }
+
+    .modal.sent .contact-form {
+      display: none;
+    }
+
+    .modal.sent .modal-success {
+      display: block;
+    }
+
+    .modal-success svg {
+      width: 62px;
+      height: 62px;
+      color: var(--slate);
+    }
+
+    .modal-success h3 {
+      font: 600 1.8rem var(--serif);
+      margin: 18px 0 10px;
+    }
+
+    .modal-success p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 auto 28px;
+      max-width: 380px;
+    }
+
+    .modal-success .button.solid {
+      padding: 17px 44px;
+    }
+
+    /* =========================================================
+       SCROLL ANIMATIONS
+    ========================================================= */
+
+    [data-anim] {
+      opacity: 0;
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s var(--ease);
+      transition-delay: var(--d, 0s);
+    }
+
+    [data-anim="up"] {
+      transform: translateY(42px);
+    }
+
+    [data-anim="left"] {
+      transform: translateX(-56px);
+    }
+
+    [data-anim="right"] {
+      transform: translateX(56px);
+    }
+
+    [data-anim="zoom"] {
+      transform: scale(0.92);
+    }
+
+    [data-anim="words"] {
+      opacity: 1;
+    }
+
+    [data-anim].in {
+      opacity: 1;
+      transform: none;
+    }
+
+    [data-anim].settled {
+      transition-delay: 0s;
+      transition-duration: 0.35s;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .wrap {
+        width: calc(100% - 48px);
+      }
+
+      .topbar {
+        height: 74px;
+        padding: 0 24px;
+      }
+
+      main {
+        padding-top: 74px;
+      }
+
+      .hero {
+        height: calc(100svh - 74px);
+      }
+
+      html {
+        scroll-padding-top: 74px;
+      }
+
+      .nav {
+        gap: 17px;
+      }
+
+      .nav a {
+        font-size: 0.66rem;
+      }
+
+      .intro {
+        gap: 40px;
+      }
+
+      .work-card {
+        min-height: 260px;
+      }
+
+      .step:not(:last-child)::after {
+        left: 112px;
+        right: -12px;
+      }
+
+      .service-card {
+        padding: 28px 24px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 640px) {
+      :root {
+        --dots-space: 48px;
+      }
+
+      .topbar {
+        height: 68px;
+      }
+
+      .brand {
+        font-size: 0.68rem;
+      }
+
+      .brand-mark {
+        height: 34px;
+        width: 34px;
+      }
+
+      main {
+        padding-top: 68px;
+      }
+
+      .hero {
+        height: calc(100svh - 68px);
+        min-height: 400px;
+      }
+
+      html {
+        scroll-padding-top: 68px;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--ink);
+        color: white;
+        padding: 22px 24px 28px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .slider-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 1.8rem;
+      }
+
+      .slide-dots {
+        bottom: 9px;
+        gap: 7px;
+        padding: 9px 11px;
+      }
+
+      .slide-dot {
+        width: 7px;
+        height: 7px;
+      }
+
+      .slide-dot[aria-current="true"] {
+        width: 21px;
+      }
+
+      .intro {
+        padding: 70px 0 80px;
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .intro-copy p {
+        font-size: 0.96rem;
+        margin-bottom: 22px;
+      }
+
+      .intro .intro-title {
+        margin-bottom: 28px;
+      }
+
+      .what-band {
+        padding: 72px 0 80px;
+      }
+
+      .what h2 {
+        font-size: 2.8rem;
+        margin-bottom: 28px;
+      }
+
+      .service-cards {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .service-card {
+        min-height: 0;
+        padding: 26px 24px 30px;
+      }
+
+      .service-card .number {
+        font-size: 2.45rem;
+      }
+
+      .service-card h3 {
+        font-size: 1.25rem;
+        margin: 22px 0 12px;
+      }
+
+      .portfolio {
+        padding: 82px 0 88px;
+      }
+
+      .section-head {
+        display: block;
+        margin-bottom: 27px;
+      }
+
+      .filters {
+        justify-content: flex-start;
+        margin-top: 24px;
+        gap: 6px;
+      }
+
+      .filter {
+        padding: 9px 12px;
+        font-size: 0.62rem;
+      }
+
+      .grid {
+        gap: 12px;
+      }
+
+      .work-card,
+      .work-card:nth-child(n) {
+        grid-column: span 12;
+        min-height: 360px;
+      }
+
+      .work-card:nth-child(2),
+      .work-card:nth-child(5) {
+        min-height: 280px;
+      }
+
+      .statement {
+        padding: 105px 24px;
+      }
+
+      .process {
+        padding: 88px 0;
+      }
+
+      .process h2 {
+        margin-bottom: 42px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 42px 22px;
+      }
+
+      .step-number {
+        width: 70px;
+        height: 70px;
+        font-size: 1.6rem;
+        margin-bottom: 17px;
+      }
+
+      .step:not(:last-child)::after {
+        display: none;
+      }
+
+      .step h3 {
+        font-size: 1.08rem;
+      }
+
+      .step p {
+        font-size: 0.85rem;
+      }
+
+      .site-footer {
+        padding: 72px 0 28px;
+      }
+
+      .footer-top {
+        padding-bottom: 52px;
+      }
+
+      .social {
+        padding: 13px 18px 13px 14px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .modal {
+        padding: 14px;
+      }
+
+      .modal-head {
+        padding: 22px 22px 18px;
+      }
+
+      .modal-head h2 {
+        font-size: 1.4rem;
+      }
+
+      .contact-form {
+        padding: 22px;
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+
+      [data-anim],
+      .statement blockquote .w,
+      .service-card .number {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .step-number {
+        transform: none !important;
+      }
+
+      .step::after {
+        transform: scaleX(1) !important;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- =========================================================
+       HEADER
+  ========================================================= -->
+
+  <header class="topbar">
+
+    <a
+      class="brand"
+      href="#home"
+      aria-label="Theophillus Atansuyi home"
+    >
+      <span class="brand-mark">TA</span>
+      <span>Theophillus Atansuyi</span>
+    </a>
+
+    <button
+      class="menu"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- =======================================================
+         HERO SLIDESHOW
+    ======================================================== -->
+
+    <section
+      class="hero"
+      id="home"
+      aria-label="Photography slideshow"
+    >
+
+      <div class="slides">
+
+        <div
+          class="slide is-active"
+          style="--slide-background: url('./slide7.jpeg'); --slide-pos: center 40%;"
+        >
+          <img
+            src="./slide7.jpeg"
+            alt="Fashion portrait of a woman in black against a bright studio backdrop"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </div>
+
+        <div
+          class="slide"
+          style="--slide-background: url('./slide3.jpeg'); --slide-pos: center 35%;"
+        >
+          <img
+            src="./slide3.jpeg"
+            alt="Studio portrait of a man wearing a red shirt"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div
+          class="slide"
+          style="--slide-background: url('./slide4.jpeg'); --slide-pos: center 65%;"
+        >
+          <img
+            src="./slide4.jpeg"
+            alt="Dramatic studio portrait of a dancer in a dark pose"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div
+          class="slide"
+          style="--slide-background: url('./slide5.jpeg'); --slide-pos: center 50%;"
+        >
+          <img
+            src="./slide5.jpeg"
+            alt="Fashion portrait of a dancer in a hat against a warm studio backdrop"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div
+          class="slide"
+          style="--slide-background: url('./slide6.jpeg'); --slide-pos: center 70%;"
+        >
+          <img
+            src="./slide6.jpeg"
+            alt="Couple seated together in coordinated traditional clothing"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+      </div>
+
+      <div
+        class="slider-controls"
+        aria-label="Slideshow controls"
+      >
+
+        <button
+          class="slider-arrow"
+          type="button"
+          data-direction="prev"
+          aria-label="Previous photo"
+        >
+          ‹
+        </button>
+
+        <div
+          class="slide-dots"
+          role="group"
+          aria-label="Choose a photo"
+        ></div>
+
+        <span
+          class="slide-count"
+          aria-live="polite"
+        >
+          01 / 05
+        </span>
+
+        <button
+          class="slider-arrow"
+          type="button"
+          data-direction="next"
+          aria-label="Next photo"
+        >
+          ›
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         ABOUT
+    ======================================================== -->
+
+    <section
+      class="intro wrap"
+      id="about"
+    >
+
+      <div data-stagger="left">
+
+        <img
+          src="./profile.jpeg"
+          alt="Portrait of Theophillus Atansuyi"
+          loading="lazy"
+          decoding="async">
+
+      </div>
+
+      <div class="intro-copy" data-stagger="up">
+
+        <h2 class="intro-title">
+          Hello!
+          <span>I’m Theophillus Atansuyi</span>
+        </h2>
+
+        <p>
+          I am a portrait, commercial, and editorial photographer
+          based in Lagos, Nigeria, dedicated to creating clean,
+          refined, timeless, and impactful imagery for individuals
+          and brands.
+        </p>
+
+        <p>
+          My approach is centered around understanding each
+          client’s unique vision, needs, and objectives. I work
+          closely with my clients throughout the creative process
+          to ensure every detail is thoughtfully considered.
+        </p>
+
+        <p>
+          Beyond delivering exceptional images, I am committed to
+          providing a seamless, enjoyable, and professional
+          experience. My goal is to create work that not only looks
+          beautiful but feels authentic, tells a story, communicates
+          purpose, and stands the test of time.
+        </p>
+
+        <button
+          class="button solid"
+          type="button"
+          data-open-contact
+        >
+          Say hi
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         SERVICES
+    ======================================================== -->
+
+    <section
+      class="what-band"
+      aria-labelledby="what-title"
+    >
+
+      <div class="what wrap">
+
+        <h2 id="what-title" data-anim="up">
+          What I Photograph
+        </h2>
+
+        <div class="service-cards" data-stagger="up" data-cols="3">
+
+          <article class="service-card">
+
+            <div class="number">
+              01
+            </div>
+
+            <h3>
+              Corporate & Team Portraits
+            </h3>
+
+            <p>
+              Executives, branches and teams, shot in one consistent
+              house style.
+            </p>
+
+          </article>
+
+          <article class="service-card">
+
+            <div class="number">
+              02
+            </div>
+
+            <h3>
+              Studio Portraits & Product Photography
+            </h3>
+
+            <p>
+              Studio portraits and product shots that highlight the best features of each subject.
+            </p>
+
+          </article>
+
+          <article class="service-card">
+
+            <div class="number">
+              03
+            </div>
+
+            <h3>
+              Brand & Event Coverage
+            </h3>
+
+            <p>
+              Launches, conferences and campaigns, delivered fast
+              and usage-ready.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         PORTFOLIO
+    ======================================================== -->
+
+    <section
+      class="portfolio"
+      id="portfolio"
+    >
+
+      <div class="wrap">
+
+        <div class="section-head">
+
+          <div data-anim="left">
+
+            <div class="eyebrow">
+              Selected stories
+            </div>
+
+            <h2>
+              Work in focus
+            </h2>
+
+          </div>
+
+          <div
+            class="filters"
+            role="group"
+            aria-label="Filter portfolio"
+            data-anim="right"
+            data-delay="0.15"
+          >
+
+            <button
+              class="filter active"
+              type="button"
+              data-filter="all"
+            >
+              All work
+            </button>
+
+            <button
+              class="filter"
+              type="button"
+              data-filter="editorial"
+            >
+              Editorial
+            </button>
+
+            <button
+              class="filter"
+              type="button"
+              data-filter="fashion"
+            >
+              Fashion
+            </button>
+
+            <button
+              class="filter"
+              type="button"
+              data-filter="portrait"
+            >
+              Portrait
+            </button>
+
+            <button
+              class="filter"
+              type="button"
+              data-filter="product"
+            >
+              Product
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="grid" data-stagger="zoom" data-cols="2">
+
+          <a
+            class="work-card"
+            href="#contact"
+            data-category="editorial"
+          >
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1502955422409-06e43fd3eff3?auto=format&fit=crop&w=1300&q=85"
+              alt="Bride in a flowing dress in a sunlit field"
+            >
+
+            <div class="card-caption">
+              <small>
+                Editorial · 2025
+              </small>
+
+              <h3>
+                Soft light, lasting feeling
+              </h3>
+            </div>
+          </a>
+
+          <a
+            class="work-card"
+            href="#contact"
+            data-category="fashion"
+          >
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1100&q=85"
+              alt="Expressive fashion portrait in natural light"
+            >
+
+            <div class="card-caption">
+              <small>
+                Fashion · Lagos
+              </small>
+
+              <h3>
+                Quiet confidence
+              </h3>
+            </div>
+          </a>
+
+          <a
+            class="work-card"
+            href="#contact"
+            data-category="portrait"
+          >
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&q=85"
+              alt="Warm close-up portrait of a woman"
+            >
+
+            <div class="card-caption">
+              <small>
+                Portrait · 2025
+              </small>
+
+              <h3>
+                Seen in a new light
+              </h3>
+            </div>
+          </a>
+
+          <a
+            class="work-card"
+            href="#contact"
+            data-category="editorial"
+          >
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1300&q=85"
+              alt="Couple celebrating together outdoors"
+            >
+
+            <div class="card-caption">
+              <small>
+                Editorial · Celebration
+              </small>
+
+              <h3>
+                The in-between moments
+              </h3>
+            </div>
+          </a>
+
+          <a
+            class="work-card"
+            href="#contact"
+            data-category="product"
+          >
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1100&q=85"
+              alt="Minimal watch photographed as a product still life"
+            >
+
+            <div class="card-caption">
+              <small>
+                Product · Studio
+              </small>
+
+              <h3>
+                Made to be noticed
+              </h3>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         STATEMENT
+    ======================================================== -->
+
+    <section class="statement">
+
+      <div class="eyebrow" data-anim="up">
+        The heart of the work
+      </div>
+
+      <blockquote id="quote" data-anim="words">
+        A moment means little if it cannot be felt beyond my
+        eyes. So I tell stories, capturing what I see in a way
+        that allows you to feel it, too.
+      </blockquote>
+
+      <div class="byline" data-anim="up" data-delay="1.6">
+        Theophillus Atansuyi · Photographer
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+
+  <footer class="site-footer" id="contact">
+
+    <div class="wrap">
+
+      <div class="footer-top">
+
+        <div class="footer-cta" data-stagger="up">
+
+          <h2>Let’s work together</h2>
+
+          <p>
+            Tell me about your project and I’ll get back to you.
+            You can also reach me on any of these.
+          </p>
+
+          <button
+            class="button solid"
+            type="button"
+            data-open-contact
+          >
+            Say hi
+          </button>
+
+        </div>
+
+        <div class="footer-reach" data-anim="up" data-delay="0.2">
+
+          <h3>Find me on</h3>
+
+          <div class="social-links">
+
+            <a
+              class="social"
+              href="https://www.instagram.com/theo.shuttervision/?hl=en"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+              Instagram
+            </a>
+
+            <a
+              class="social"
+              href="https://wa.me/2347011791265"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+                <g transform="translate(5.7 5.5) scale(0.52)">
+                  <path stroke-width="3.2" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </g>
+              </svg>
+              WhatsApp
+            </a>
+            <a
+  class="social"
+  type="button"
+  data-open-contact
+  aria-label="Send an email"
+>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="2" y="4" width="20" height="16" rx="2"/>
+    <path d="m22 7-10 5L2 7"/>
+  </svg>
+  Email
+</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <a class="footer-brand" href="#home">
+          Theophillus Atansuyi
+        </a>
+
+        <div class="copy">
+          © <span id="year"></span>
+          Theophillus Atansuyi · Lagos, Nigeria
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================================
+       CONTACT POP-UP
+  ========================================================= -->
+
+  <div
+    class="modal"
+    id="contact-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contact-title"
+    aria-hidden="true"
+  >
+
+    <div class="modal-backdrop" data-close></div>
+
+    <div class="modal-card">
+
+      <div class="modal-head">
+
+        <div>
+          <h2 id="contact-title">Say hi to Theophillus</h2>
+          <p>Tell me about your project and I’ll get back to you.</p>
+        </div>
+
+        <button
+          class="modal-close"
+          type="button"
+          aria-label="Close"
+          data-close
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <form class="contact-form" id="contact-form">
+
+        <div class="field-row">
+
+          <div class="field">
+            <label for="cf-name">Your name</label>
+            <input
+              id="cf-name"
+              name="name"
+              type="text"
+              placeholder="Your name"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="cf-email">Your email</label>
+            <input
+              id="cf-email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label for="cf-message">Your message</label>
+          <textarea
+            id="cf-message"
+            name="message"
+            placeholder="Tell me about your project, preferred date and location."
+            required
+          ></textarea>
+        </div>
+
+        <!-- spam trap: real visitors never see or fill this -->
+        <input
+          class="honey"
+          type="text"
+          name="_honey"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        >
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+
+        <button class="send" id="send-btn" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m22 2-7 20-4-9-9-4Z"/>
+            <path d="M22 2 11 13"/>
+          </svg>
+          <span>Send message</span>
+        </button>
+
+        <p class="form-note">Your message goes straight to Theophillus’s inbox.</p>
+
+      </form>
+
+      <div class="modal-success" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        <h3>Message sent</h3>
+        <p>Thanks for reaching out. I’ll get back to you soon.</p>
+        <button class="button solid" type="button" data-close>Close</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================= -->
+
+  <script>
+
+    /* =========================================================
+       SETTINGS
+       ▸ CONTACT_EMAIL is where every message from the form is
+         delivered. Put your client's real email address here.
+    ========================================================= */
+
+    const CONTACT_EMAIL = "theoatansuyi@gmail.com";
+
+
+    /* =========================================================
+       SLIDESHOW
+    ========================================================= */
+
+    const hero = document.querySelector(".hero");
+
+    const slides = [
+      ...document.querySelectorAll(".slide")
+    ];
+
+    const dots = document.querySelector(".slide-dots");
+
+    const counter = document.querySelector(".slide-count");
+
+    const SLIDE_DELAY = 1500;
+
+    let currentSlide = 0;
+
+    let slideTimer;
+
+    slides.forEach((slide, index) => {
+
+      const dot = document.createElement("button");
+
+      dot.type = "button";
+
+      dot.className = "slide-dot";
+
+      dot.setAttribute(
+        "aria-label",
+        `Show photo ${index + 1}`
+      );
+
+      dot.setAttribute(
+        "aria-current",
+        index === 0 ? "true" : "false"
+      );
+
+      dot.addEventListener(
+        "click",
+        () => showSlide(index, true)
+      );
+
+      dots.append(dot);
+
+    });
+
+    function showSlide(index, resetTimer = false) {
+
+      currentSlide =
+        (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+
+        slide.classList.toggle(
+          "is-active",
+          i === currentSlide
+        );
+
+      });
+
+      [
+        ...dots.children
+      ].forEach((dot, i) => {
+
+        dot.setAttribute(
+          "aria-current",
+          i === currentSlide ? "true" : "false"
+        );
+
+      });
+
+      counter.textContent =
+        `${String(currentSlide + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+
+      if (resetTimer) {
+        startSlideTimer();
+      }
+    }
+
+    function startSlideTimer() {
+
+      clearInterval(slideTimer);
+
+      slideTimer = setInterval(() => {
+
+        showSlide(currentSlide + 1);
+
+      }, SLIDE_DELAY);
+
+    }
+
+    document
+      .querySelectorAll(".slider-arrow")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          showSlide(
+            currentSlide +
+              (
+                button.dataset.direction === "next"
+                  ? 1
+                  : -1
+              ),
+            true
+          );
+
+        });
+
+      });
+
+    let touchStartX = null;
+
+    hero.addEventListener(
+      "touchstart",
+      event => {
+        touchStartX = event.touches[0].clientX;
+      },
+      { passive: true }
+    );
+
+    hero.addEventListener("touchend", event => {
+
+      if (touchStartX === null) return;
+
+      const distance =
+        event.changedTouches[0].clientX - touchStartX;
+
+      if (Math.abs(distance) > 50) {
+        showSlide(
+          currentSlide + (distance < 0 ? 1 : -1),
+          true
+        );
+      }
+
+      touchStartX = null;
+
+    });
+
+    startSlideTimer();
+
+
+    /* =========================================================
+       SCROLL ANIMATIONS
+    ========================================================= */
+
+    const quote = document.querySelector("#quote");
+
+    if (quote) {
+
+      const words = quote.textContent.trim().split(/\s+/);
+
+      quote.setAttribute("aria-label", words.join(" "));
+
+      quote.textContent = "";
+
+      words.forEach((word, i) => {
+
+        const span = document.createElement("span");
+
+        span.className = "w";
+
+        span.setAttribute("aria-hidden", "true");
+
+        span.style.setProperty("--wd", `${i * 0.06}s`);
+
+        span.textContent = word;
+
+        quote.append(span, " ");
+
+      });
+
+    }
+
+    document
+      .querySelectorAll("[data-stagger]")
+      .forEach(parent => {
+
+        const cols = parseInt(parent.dataset.cols, 10) || 99;
+
+        [...parent.children].forEach((child, i) => {
+
+          if (!child.hasAttribute("data-anim")) {
+            child.setAttribute(
+              "data-anim",
+              parent.dataset.stagger || "up"
+            );
+          }
+
+          child.style.setProperty(
+            "--d",
+            `${(i % cols) * 0.12}s`
+          );
+
+        });
+
+      });
+
+    document
+      .querySelectorAll("[data-delay]")
+      .forEach(el => {
+        el.style.setProperty("--d", `${el.dataset.delay}s`);
+      });
+
+    const settleTimers = new WeakMap();
+
+    function settle(el) {
+
+      clearTimeout(settleTimers.get(el));
+
+      const delay =
+        parseFloat(el.style.getPropertyValue("--d")) || 0;
+
+      settleTimers.set(
+        el,
+        setTimeout(
+          () => el.classList.add("settled"),
+          (delay + 1) * 1000 + 300
+        )
+      );
+
+    }
+
+    function reveal(el) {
+
+      if (el.classList.contains("in")) return;
+
+      el.classList.add("in");
+
+      settle(el);
+
+    }
+
+    function reset(el) {
+
+      clearTimeout(settleTimers.get(el));
+
+      el.classList.remove("in", "settled");
+
+    }
+
+    const animTargets =
+      document.querySelectorAll("[data-anim]");
+
+    if (
+      "IntersectionObserver" in window &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+
+      const revealObserver = new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.intersectionRatio >= 0.1) {
+
+              reveal(entry.target);
+
+            } else if (!entry.isIntersecting) {
+
+              reset(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: [0, 0.1],
+          rootMargin: "0px 0px -30px 0px"
+        }
+      );
+
+      animTargets.forEach(el => revealObserver.observe(el));
+
+    } else {
+
+      animTargets.forEach(el => el.classList.add("in", "settled"));
+
+    }
+
+
+    /* =========================================================
+       HEADER + SCROLL PROGRESS
+    ========================================================= */
+
+    const topbar = document.querySelector(".topbar");
+
+    const progress = document.querySelector(".progress");
+
+    let ticking = false;
+
+    function onScroll() {
+
+      const scrollTop = window.scrollY;
+
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      progress.style.transform =
+        `scaleX(${maxScroll > 0 ? scrollTop / maxScroll : 0})`;
+
+      topbar.classList.toggle("scrolled", scrollTop > 20);
+
+      ticking = false;
+
+    }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(onScroll);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    onScroll();
+
+
+    /* =========================================================
+       PORTFOLIO FILTERS
+    ========================================================= */
+
+    const filters =
+      document.querySelectorAll(".filter");
+
+    const cards =
+      document.querySelectorAll(".work-card");
+
+    filters.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          filters.forEach(item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          });
+
+          button.classList.add("active");
+
+          const selected =
+            button.dataset.filter;
+
+          const visible = [];
+
+          cards.forEach(card => {
+
+            const shouldHide =
+              selected !== "all" &&
+              card.dataset.category !== selected;
+
+            card.hidden = shouldHide;
+
+            if (!shouldHide) visible.push(card);
+
+          });
+
+          visible.forEach((card, i) => {
+
+            card.classList.remove("in", "settled");
+
+            card.style.setProperty("--d", `${i * 0.1}s`);
+
+            void card.offsetWidth;
+
+            reveal(card);
+
+          });
+
+        }
+      );
+
+    });
+
+
+    /* =========================================================
+       CONTACT POP-UP + EMAIL FORM
+    ========================================================= */
+
+    const modal = document.querySelector("#contact-modal");
+
+    const modalCard = modal.querySelector(".modal-card");
+
+    const form = document.querySelector("#contact-form");
+
+    const statusBox = document.querySelector("#form-status");
+
+    const sendBtn = document.querySelector("#send-btn");
+
+    const sendLabel = sendBtn.querySelector("span");
+
+    let lastFocused = null;
+
+    function openModal() {
+
+      lastFocused = document.activeElement;
+
+      if (modal.classList.contains("sent")) {
+        modal.classList.remove("sent");
+        form.reset();
+      }
+
+      statusBox.textContent = "";
+
+      modal.classList.add("open");
+
+      modal.setAttribute("aria-hidden", "false");
+
+      document.body.classList.add("modal-open");
+
+      setTimeout(
+        () => form.elements.name.focus(),
+        120
+      );
+
+    }
+
+    function closeModal() {
+
+      modal.classList.remove("open");
+
+      modal.setAttribute("aria-hidden", "true");
+
+      document.body.classList.remove("modal-open");
+
+      if (lastFocused) lastFocused.focus();
+
+    }
+
+    document
+      .querySelectorAll('[data-open-contact]')
+      .forEach(el => {
+
+        el.addEventListener("click", event => {
+
+          event.preventDefault();
+
+          openModal();
+
+        });
+
+      });
+
+    modal
+      .querySelectorAll("[data-close]")
+      .forEach(el => el.addEventListener("click", closeModal));
+
+    document.addEventListener("keydown", event => {
+
+      if (!modal.classList.contains("open")) return;
+
+      if (event.key === "Escape") {
+        closeModal();
+        return;
+      }
+
+      if (event.key === "Tab") {
+
+        const focusable = [
+          ...modalCard.querySelectorAll(
+            "button, a[href], input, select, textarea"
+          )
+        ].filter(el =>
+          !el.disabled &&
+          el.tabIndex !== -1 &&
+          el.offsetParent !== null
+        );
+
+        if (!focusable.length) return;
+
+        const first = focusable[0];
+
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+
+      }
+
+    });
+
+
+    /* =========================================================
+       CONTACT FORM SUBMISSION
+    ========================================================= */
+
+    form.addEventListener("submit", async event => {
+
+      event.preventDefault();
+
+      /* The hidden spam-trap field was filled: it's a bot. */
+      if (form.elements._honey.value) return;
+
+      statusBox.textContent = "";
+
+      if (CONTACT_EMAIL.includes("YOUR-CLIENT")) {
+
+        console.warn(
+          "Set CONTACT_EMAIL in the script to your client's email address."
+        );
+
+        statusBox.textContent =
+          "This form isn't connected to an email address yet.";
+
+        return;
+
+      }
+
+      sendBtn.disabled = true;
+
+      sendLabel.textContent = "Sending…";
+
+      try {
+
+        const response = await fetch(
+          `https://formsubmit.co/ajax/${CONTACT_EMAIL}`,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            
+
+            body: JSON.stringify({
+
+              name:
+                form.elements.name.value.trim(),
+
+              email:
+                form.elements.email.value.trim(),
+
+              message:
+                form.elements.message.value.trim(),
+
+              /* Lets Theophillus reply directly to the visitor. */
+              _replyto:
+                form.elements.email.value.trim(),
+
+              _subject:
+                `New photography enquiry from ${form.elements.name.value.trim()}`,
+
+              _template: "table",
+
+              _captcha: "false"
+
+            })
+          }
+        );
+
+        const result = await response.json();
+
+        if (
+          !response.ok ||
+          (result.success !== "true" && result.success !== true)
+        ) {
+          throw new Error(
+            result.message || "Request failed"
+          );
+        }
+
+        modal.classList.add("sent");
+
+        form.reset();
+
+      } catch (error) {
+
+        console.error(error);
+
+        statusBox.textContent =
+          "Something went wrong and your message wasn't sent. " +
+          "Please try again, or message me on WhatsApp or Instagram.";
+
+      } finally {
+
+        sendBtn.disabled = false;
+
+        sendLabel.textContent = "Send message";
+
+      }
+
+    });
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const menu =
+      document.querySelector(".menu");
+
+    const nav =
+      document.querySelector(".nav");
+
+    menu.addEventListener(
+      "click",
+      () => {
+
+        const open =
+          nav.classList.toggle("open");
+
+        menu.setAttribute(
+          "aria-expanded",
+          String(open)
+        );
+
+        menu.setAttribute(
+          "aria-label",
+          open
+            ? "Close navigation"
+            : "Open navigation"
+        );
+
+      }
+    );
+
+    nav
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            nav.classList.remove(
+              "open"
+            );
+
+            menu.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menu.setAttribute(
+              "aria-label",
+              "Open navigation"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =========================================================
+       CURRENT YEAR
+    ========================================================= */
+
+    document.querySelector("#year").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+
+</html>
