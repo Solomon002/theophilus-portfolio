@@ -2900,13 +2900,11 @@
 
       } catch (error) {
 
-        console.error(error);
+  console.error(error);
 
-        statusBox.textContent =
-          "Something went wrong and your message wasn't sent. " +
-          "Please try again, or message me on WhatsApp or Instagram.";
+  statusBox.textContent = "Couldn't send: " + error.message;
 
-      } finally {
+} finally {
 
         sendBtn.disabled = false;
 
