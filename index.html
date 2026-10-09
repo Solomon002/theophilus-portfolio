@@ -675,21 +675,17 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      background: #ddd6cc;
       transition: transform 0.7s var(--ease);
+    }
+
+    .gallery-item img.is-broken {
+      display: none;
     }
 
     .gallery-item:hover img {
       transform: scale(1.04);
     }
-
-    .gallery-item img {
-  /* ... existing rules ... */
-  background: #ddd6cc;
-}
-
-.gallery-item img.is-broken {
-  display: none;
-}
 
     /* Hover overlay */
 
@@ -1069,20 +1065,66 @@
       transform: translateY(-4px);
     }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.18);
-      padding-top: 28px;
+    /* =========================================================
+       WHATSAPP QR CARD
+       Sits on its own row below the social pills.
+    ========================================================= */
+
+    .qr-card {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.65);
+      gap: 16px;
+      margin-top: 22px;
+      padding: 14px 22px 14px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      width: fit-content;
+      max-width: 100%;
+      transition:
+        background 0.25s,
+        border-color 0.25s,
+        transform 0.35s var(--ease);
     }
 
-    .footer-brand {
-      font: 500 1.2rem var(--serif);
-      color: #fff;
+    .qr-card:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.55);
+      transform: translateY(-3px);
+    }
+
+    .qr-card img {
+      display: block;
+      width: 96px;
+      height: 96px;
+      flex: none;
+      background: #fff;
+      padding: 6px;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .qr-card__copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      line-height: 1.3;
+      min-width: 0;
+    }
+
+    .qr-card__copy strong {
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .qr-card__copy span {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.68);
+      line-height: 1.4;
     }
 
     /* =========================================================
@@ -1584,7 +1626,7 @@
         letter-spacing: 0.1em;
       }
 
-            /* One image per row on mobile — each tile fills the
+      /* One image per row on mobile — each tile fills the
          screen width so the gallery feels as grand as desktop. */
 
       .gallery {
@@ -1690,6 +1732,27 @@
 
       .social {
         padding: 13px 18px 13px 14px;
+      }
+
+      /* Compact QR card on mobile */
+
+      .qr-card {
+        gap: 12px;
+        margin-top: 16px;
+        padding: 12px 18px 12px 12px;
+      }
+
+      .qr-card img {
+        width: 78px;
+        height: 78px;
+      }
+
+      .qr-card__copy strong {
+        font-size: 0.74rem;
+      }
+
+      .qr-card__copy span {
+        font-size: 0.7rem;
       }
 
       .footer-bottom {
@@ -1919,7 +1982,7 @@
       <div data-stagger="left">
 
         <img
-          src="./images/profile2.jpeg"
+          src="./images/profile.jpeg"
           alt="Portrait of Theophillus Atansuyi"
           loading="lazy"
           decoding="async">
@@ -2222,19 +2285,36 @@
               </svg>
               WhatsApp
             </a>
-            <a
-  class="social"
-  type="button"
-  data-open-contact
-  aria-label="Send an email"
->
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <rect x="2" y="4" width="20" height="16" rx="2"/>
-    <path d="m22 7-10 5L2 7"/>
-  </svg>
-  Email
-</a>
 
+            <a
+              class="social"
+              type="button"
+              data-open-contact
+              aria-label="Send an email"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-10 5L2 7"/>
+              </svg>
+              Email
+            </a>
+
+          </div>
+
+          <!-- QR card sits on its own row, below the social pills -->
+
+          <div class="qr-card">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=0&data=https%3A%2F%2Fwa.me%2F2347011791265"
+              alt="Scan to chat on WhatsApp"
+              loading="lazy"
+              width="120"
+              height="120"
+            >
+            <div class="qr-card__copy">
+              <strong>Scan to chat</strong>
+              <span>Opens WhatsApp directly</span>
+            </div>
           </div>
 
         </div>
@@ -2930,17 +3010,17 @@
 
     renderGallery("all");
 
-/* Hide any gallery image that fails to load, so a wrong path
-   just leaves an empty tile rather than a broken-image icon. */
-galleryEl.addEventListener(
-  "error",
-  event => {
-    if (event.target.tagName === "IMG") {
-      event.target.classList.add("is-broken");
-    }
-  },
-  true
-);
+    /* Hide any gallery image that fails to load, so a wrong path
+       just leaves an empty tile rather than a broken-image icon. */
+    galleryEl.addEventListener(
+      "error",
+      event => {
+        if (event.target.tagName === "IMG") {
+          event.target.classList.add("is-broken");
+        }
+      },
+      true
+    );
 
 
     /* =========================================================
