@@ -13,7 +13,7 @@
 
   <title>Theophillus Atansuyi — Photographer & Visual Storyteller</title>
 
-  <link rel="preload" as="image" href="./profile.jpeg" fetchpriority="high">
+  <link rel="preload" as="image" href="./images/profile2.jpeg" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,28 +46,28 @@
     }
 
     html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 88px;
-  overflow-x: hidden;
-}
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+      overflow-x: hidden;
+    }
 
     body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--sans);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100%;
-}
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
 
-main,
-header,
-footer,
-section {
-  max-width: 100%;
-}
+    main,
+    header,
+    footer,
+    section {
+      max-width: 100%;
+    }
 
     body.modal-open {
       overflow: hidden;
@@ -88,10 +88,10 @@ section {
     }
 
     .wrap {
-  width: min(var(--wide), calc(100% - 9vw));
-  max-width: 100%;
-  margin: auto;
-}
+      width: min(var(--wide), calc(100% - 9vw));
+      max-width: 100%;
+      margin: auto;
+    }
 
     .eyebrow {
       font-size: 0.72rem;
@@ -319,32 +319,6 @@ section {
     .slide.is-active img {
       transform: scale(1.035);
     }
-
-    /* @media (min-width: 851px) {
-
-      :root {
-        --dots-space: 0px;
-      }
-
-      .slide img {
-        display: none;
-      }
-
-      .slide::before {
-        inset: 0;
-        filter: none;
-        opacity: 1;
-        background-size: cover;
-        background-position: var(--slide-pos, center 30%);
-        transform: scale(1);
-        transition: transform 8s ease-out;
-      }
-
-      .slide.is-active::before {
-        transform: scale(1.05);
-      }
-
-    } */
 
     /* =========================================================
        SLIDESHOW CONTROLS
@@ -676,86 +650,222 @@ section {
       color: white;
     }
 
-    .grid {
+    /* 3-column masonry wall */
+
+    .gallery {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
-    .work-card {
+    .gallery-item {
       position: relative;
+      display: block;
       overflow: hidden;
-      background: #c8b8a7;
-      min-height: 310px;
-      grid-column: span 4;
-      isolation: isolate;
+      background: #ddd6cc;
+      cursor: pointer;
+      aspect-ratio: 4 / 5;
     }
 
-    .work-card:nth-child(1),
-    .work-card:nth-child(4) {
-      grid-column: span 7;
-    }
-
-    .work-card:nth-child(2),
-    .work-card:nth-child(5) {
-      grid-column: span 5;
-    }
-
-    .work-card:nth-child(3) {
-      grid-column: span 5;
-    }
-
-    .work-card img {
+    .gallery-item img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
+      display: block;
       transition: transform 0.7s var(--ease);
-      z-index: -2;
     }
 
-    .work-card::after {
-      content: "";
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-item img {
+  /* ... existing rules ... */
+  background: #ddd6cc;
+}
+
+.gallery-item img.is-broken {
+  display: none;
+}
+
+    /* Hover overlay */
+
+    .gallery-item__overlay {
       position: absolute;
-      inset: 35% 0 0;
-      background: linear-gradient(
-        transparent,
-        rgba(22, 19, 16, 0.62)
-      );
-      z-index: -1;
-    }
-
-    .work-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .work-card .card-caption {
-      position: absolute;
-      left: 25px;
-      bottom: 24px;
-      color: white;
-      transition: transform 0.5s var(--ease);
-    }
-
-    .work-card:hover .card-caption {
-      transform: translateY(-6px);
-    }
-
-    .card-caption small {
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(20, 17, 15, 0.5);
+      color: #fff;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #ead6c1;
+      font-weight: 600;
+      text-align: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.35s var(--ease);
+      pointer-events: none;
+      z-index: 2;
     }
 
-    .card-caption h3 {
-      font: 500 1.8rem var(--serif);
-      margin: 6px 0 0;
+    .gallery-item__overlay span {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 99px;
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.08);
+      line-height: 1;
     }
 
-    .work-card[hidden] {
-      display: none;
+    .gallery-item__overlay svg {
+      width: 15px;
+      height: 15px;
+      flex: none;
+    }
+
+    .gallery-item:hover .gallery-item__overlay,
+    .gallery-item:focus-visible .gallery-item__overlay {
+      opacity: 1;
+    }
+
+    /* =========================================================
+       LIGHTBOX
+    ========================================================= */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(12, 10, 9, 0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox__stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox__img {
+      max-width: min(1100px, 100%);
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.98);
+      opacity: 0.001;
+      transition:
+        opacity 0.35s ease,
+        transform 0.45s var(--ease);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .lightbox.open .lightbox__img.is-loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.25s, transform 0.35s var(--ease);
+      z-index: 3;
+    }
+
+    .lightbox__close:hover,
+    .lightbox__close:focus-visible {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+
+    .lightbox__close svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .lightbox__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0.65;
+      transition: opacity 0.25s, transform 0.35s var(--ease);
+      z-index: 3;
+    }
+
+    .lightbox__nav:hover,
+    .lightbox__nav:focus-visible {
+      opacity: 1;
+    }
+
+    .lightbox__nav[data-nav="prev"] {
+      left: clamp(8px, 3vw, 40px);
+    }
+
+    .lightbox__nav[data-nav="next"] {
+      right: clamp(8px, 3vw, 40px);
+    }
+
+    .lightbox__nav svg {
+      width: 40px;
+      height: 40px;
+      stroke-width: 1;
+    }
+
+    .lightbox__counter {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      pointer-events: none;
     }
 
     /* =========================================================
@@ -1240,19 +1350,19 @@ section {
     }
 
     [data-anim="up"] {
-      transform: translateY(42px);
+      transform: translateY(56px);
     }
 
     [data-anim="left"] {
-      transform: translateX(-56px);
+      transform: translateX(-70px);
     }
 
     [data-anim="right"] {
-      transform: translateX(56px);
+      transform: translateX(70px);
     }
 
     [data-anim="zoom"] {
-      transform: scale(0.92);
+      transform: scale(0.82) translateY(30px);
     }
 
     [data-anim="words"] {
@@ -1307,8 +1417,8 @@ section {
         gap: 40px;
       }
 
-      .work-card {
-        min-height: 260px;
+      .gallery {
+        gap: 16px;
       }
 
       .step:not(:last-child)::after {
@@ -1453,33 +1563,85 @@ section {
 
       .section-head {
         display: block;
-        margin-bottom: 27px;
+        margin-bottom: 22px;
+      }
+
+      .section-head h2 {
+        font-size: 2.4rem;
+        line-height: 1.05;
+        margin-top: 10px;
       }
 
       .filters {
         justify-content: flex-start;
-        margin-top: 24px;
+        margin-top: 18px;
         gap: 6px;
       }
 
       .filter {
-        padding: 9px 12px;
+        padding: 9px 13px;
+        font-size: 0.66rem;
+        letter-spacing: 0.1em;
+      }
+
+            /* One image per row on mobile — each tile fills the
+         screen width so the gallery feels as grand as desktop. */
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .gallery-item {
+        aspect-ratio: 4 / 5;
+      }
+
+      .gallery-item__overlay {
+        font-size: 0.58rem;
+        letter-spacing: 0.16em;
+        padding: 12px;
+      }
+
+      .gallery-item__overlay span {
+        padding: 10px 14px;
+        gap: 8px;
+      }
+
+      .gallery-item__overlay svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      .lightbox {
+        padding: 20px 8px;
+      }
+
+      .lightbox__nav {
+        width: 44px;
+        height: 44px;
+      }
+
+      .lightbox__nav svg {
+        width: 30px;
+        height: 30px;
+      }
+
+      .lightbox__nav[data-nav="prev"] {
+        left: 4px;
+      }
+
+      .lightbox__nav[data-nav="next"] {
+        right: 4px;
+      }
+
+      .lightbox__close {
+        top: 12px;
+        right: 12px;
+      }
+
+      .lightbox__counter {
+        bottom: 14px;
         font-size: 0.62rem;
-      }
-
-      .grid {
-        gap: 12px;
-      }
-
-      .work-card,
-      .work-card:nth-child(n) {
-        grid-column: span 12;
-        min-height: 360px;
-      }
-
-      .work-card:nth-child(2),
-      .work-card:nth-child(5) {
-        min-height: 280px;
       }
 
       .statement {
@@ -1644,10 +1806,10 @@ section {
 
         <div
           class="slide is-active"
-          style="--slide-background: url('./profile.jpeg'); --slide-pos: center 40%;"
+          style="--slide-background: url('./images/slide5.jpeg'); --slide-pos: center 40%;"
         >
           <img
-            src="./slide5.jpeg"
+            src="./images/slide5.jpeg"
             alt="Fashion portrait of a woman in black against a bright studio backdrop"
             loading="eager"
             fetchpriority="high"
@@ -1657,10 +1819,10 @@ section {
 
         <div
           class="slide"
-          style="--slide-background: url('./slide3.jpeg'); --slide-pos: center 35%;"
+          style="--slide-background: url('./images/slide3.jpeg'); --slide-pos: center 35%;"
         >
           <img
-            src="./slide3.jpeg"
+            src="./images/slide3.jpeg"
             alt="Studio portrait of a man wearing a red shirt"
             loading="lazy"
             decoding="async"
@@ -1669,10 +1831,10 @@ section {
 
         <div
           class="slide"
-          style="--slide-background: url('./slide4.jpeg'); --slide-pos: center 65%;"
+          style="--slide-background: url('./images/slide4.jpeg'); --slide-pos: center 65%;"
         >
           <img
-            src="./slide4.jpeg"
+            src="./images/slide4.jpeg"
             alt="Dramatic studio portrait of a dancer in a dark pose"
             loading="lazy"
             decoding="async"
@@ -1681,10 +1843,10 @@ section {
 
         <div
           class="slide"
-          style="--slide-background: url('./slide5.jpeg'); --slide-pos: center 50%;"
+          style="--slide-background: url('./images/slide5.jpeg'); --slide-pos: center 50%;"
         >
           <img
-            src="./slide5.jpeg"
+            src="./images/slide5.jpeg"
             alt="Fashion portrait of a dancer in a hat against a warm studio backdrop"
             loading="lazy"
             decoding="async"
@@ -1693,10 +1855,10 @@ section {
 
         <div
           class="slide"
-          style="--slide-background: url('./slide6.jpeg'); --slide-pos: center 70%;"
+          style="--slide-background: url('./images/slide6.jpeg'); --slide-pos: center 70%;"
         >
           <img
-            src="./slide6.jpeg"
+            src="./images/slide6.jpeg"
             alt="Couple seated together in coordinated traditional clothing"
             loading="lazy"
             decoding="async"
@@ -1757,7 +1919,7 @@ section {
       <div data-stagger="left">
 
         <img
-          src="./profile.jpeg"
+          src="./images/profile2.jpeg"
           alt="Portrait of Theophillus Atansuyi"
           loading="lazy"
           decoding="async">
@@ -1924,7 +2086,7 @@ section {
               type="button"
               data-filter="editorial"
             >
-              Editorial
+              Editorial/Fashion
             </button>
 
             <button
@@ -1932,7 +2094,7 @@ section {
               type="button"
               data-filter="fashion"
             >
-              Fashion
+              Concert
             </button>
 
             <button
@@ -1955,119 +2117,17 @@ section {
 
         </div>
 
-        <div class="grid" data-stagger="zoom" data-cols="2">
+        <!--
+          The gallery is generated by JS from the GALLERY data
+          array below. Nothing else needs to be edited here.
+        -->
 
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="editorial"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1502955422409-06e43fd3eff3?auto=format&fit=crop&w=1300&q=85"
-              alt="Bride in a flowing dress in a sunlit field"
-            >
-
-            <div class="card-caption">
-              <small>
-                Editorial · 2025
-              </small>
-
-              <h3>
-                Soft light, lasting feeling
-              </h3>
-            </div>
-          </a>
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="fashion"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1100&q=85"
-              alt="Expressive fashion portrait in natural light"
-            >
-
-            <div class="card-caption">
-              <small>
-                Fashion · Lagos
-              </small>
-
-              <h3>
-                Quiet confidence
-              </h3>
-            </div>
-          </a>
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="portrait"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&q=85"
-              alt="Warm close-up portrait of a woman"
-            >
-
-            <div class="card-caption">
-              <small>
-                Portrait · 2025
-              </small>
-
-              <h3>
-                Seen in a new light
-              </h3>
-            </div>
-          </a>
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="editorial"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1300&q=85"
-              alt="Couple celebrating together outdoors"
-            >
-
-            <div class="card-caption">
-              <small>
-                Editorial · Celebration
-              </small>
-
-              <h3>
-                The in-between moments
-              </h3>
-            </div>
-          </a>
-
-          <a
-            class="work-card"
-            href="#contact"
-            data-category="product"
-          >
-            <img
-              loading="lazy"
-              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1100&q=85"
-              alt="Minimal watch photographed as a product still life"
-            >
-
-            <div class="card-caption">
-              <small>
-                Product · Studio
-              </small>
-
-              <h3>
-                Made to be noticed
-              </h3>
-            </div>
-          </a>
-
-        </div>
+        <div
+          class="gallery"
+          id="gallery"
+          data-stagger="zoom"
+          data-cols="3"
+        ></div>
 
       </div>
 
@@ -2315,6 +2375,72 @@ section {
   </div>
 
   <!-- =========================================================
+       LIGHTBOX
+  ========================================================= -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image viewer"
+    aria-hidden="true"
+  >
+    <div class="lightbox__stage">
+
+      <button
+        class="lightbox__close"
+        type="button"
+        aria-label="Close image viewer"
+        data-lightbox-close
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+
+      <button
+        class="lightbox__nav"
+        type="button"
+        data-nav="prev"
+        aria-label="Previous image"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/>
+          <path d="m12 5-7 7 7 7"/>
+        </svg>
+      </button>
+
+      <img
+        class="lightbox__img"
+        id="lightbox-img"
+        src=""
+        alt=""
+      >
+
+      <button
+        class="lightbox__nav"
+        type="button"
+        data-nav="next"
+        aria-label="Next image"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/>
+          <path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+
+      <div
+        class="lightbox__counter"
+        id="lightbox-counter"
+        aria-live="polite"
+      ></div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
        JAVASCRIPT
   ========================================================= -->
 
@@ -2327,6 +2453,87 @@ section {
     ========================================================= */
 
     const CONTACT_EMAIL = "theoatansuyi@gmail.com";
+
+
+    /* =========================================================
+       GALLERY DATA
+       ▸ Replace or extend these arrays with your own image URLs.
+       ▸ The `editorial` array is filled with your real images.
+       ▸ The other arrays pull free Unsplash images so the
+         sections are not empty while you collect real ones.
+    ========================================================= */
+
+    const GALLERY = {
+
+      editorial: [
+        "/images/EDITORIALS/editorial1.jpg",
+        "/images/EDITORIALS/editorial2.jpg",
+        "/images/EDITORIALS/editorial3.jpg",
+        "/images/EDITORIALS/editorial4.jpg",
+        "/images/EDITORIALS/editorial5.jpg",
+        "/images/EDITORIALS/editorial6.jpg",
+        "/images/EDITORIALS/editorial8.jpg",
+        "/images/EDITORIALS/editorial9.jpeg",
+        "/images/EDITORIALS/editorial10.jpeg",
+        "/images/EDITORIALS/editorial11.jpeg",
+        "/images/EDITORIALS/editorial12.jpeg",
+        "/images/EDITORIALS/editorial13.jpeg",
+        "/images/EDITORIALS/editorial14.jpeg",
+      ],
+
+      concert: [
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1200&q=85"
+      ],
+
+      portrait: [
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=1200&q=85"
+      ],
+
+      product: [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=85"
+      ],
+
+      fashion: [
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1200&q=85"
+      ]
+
+    };
+
+    /*
+      Build the "all work" pool. It mixes every category so the
+      All Work tab shows a genuine cross-section. Editorial is
+      included first so the real images lead.
+    */
+
+    const ALL_WORK_ORDER = [
+      "editorial",
+      "fashion",
+      "concert",
+      "portrait",
+      "product"
+    ];
 
 
     /* =========================================================
@@ -2571,15 +2778,14 @@ section {
 
     }
 
-    const animTargets =
-      document.querySelectorAll("[data-anim]");
+    let revealObserver = null;
 
     if (
       "IntersectionObserver" in window &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
 
-      const revealObserver = new IntersectionObserver(
+      revealObserver = new IntersectionObserver(
         entries => {
 
           entries.forEach(entry => {
@@ -2603,13 +2809,139 @@ section {
         }
       );
 
-      animTargets.forEach(el => revealObserver.observe(el));
+    }
 
-    } else {
+    function observeAnim(el) {
 
-      animTargets.forEach(el => el.classList.add("in", "settled"));
+      if (revealObserver) revealObserver.observe(el);
+
+      else el.classList.add("in", "settled");
 
     }
+
+    document
+      .querySelectorAll("[data-anim]")
+      .forEach(observeAnim);
+
+
+    /* =========================================================
+       GALLERY RENDER
+    ========================================================= */
+
+    const galleryEl = document.querySelector("#gallery");
+
+    const overlayTemplate = `
+      <div class="gallery-item__overlay" aria-hidden="true">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h6v6"/>
+            <path d="M9 21H3v-6"/>
+            <path d="M21 3l-7 7"/>
+            <path d="M3 21l7-7"/>
+          </svg>
+          Click to view all images
+        </span>
+      </div>
+    `;
+
+    function buildItems(selected) {
+
+      const items = [];
+
+      if (selected === "all") {
+
+        ALL_WORK_ORDER.forEach(category => {
+
+          (GALLERY[category] || []).forEach(src => {
+
+            items.push({ category, src });
+
+          });
+
+        });
+
+      } else {
+
+        (GALLERY[selected] || []).forEach(src => {
+
+          items.push({ category: selected, src });
+
+        });
+
+      }
+
+      return items;
+
+    }
+
+    function renderGallery(selected) {
+
+      const items = buildItems(selected);
+
+      galleryEl.innerHTML = "";
+
+      items.forEach((item, i) => {
+
+        const a = document.createElement("a");
+
+        a.className = "gallery-item";
+
+        a.href = "#portfolio";
+
+        a.dataset.category = item.category;
+
+        a.dataset.full = item.src;
+
+        a.setAttribute("data-anim", "zoom");
+
+        a.style.setProperty("--d", `${(i % 3) * 0.12}s`);
+
+        a.innerHTML = `
+          <img loading="lazy" src="${item.src}" alt="">
+          ${overlayTemplate}
+        `;
+
+        /* Apply the same reveal treatment to freshly built items. */
+
+        a.classList.add("in");
+
+        galleryEl.appendChild(a);
+
+      });
+
+      /* Bind lightbox + observer on the fresh nodes. */
+
+      galleryEl
+        .querySelectorAll(".gallery-item")
+        .forEach((item, i) => {
+
+          item.addEventListener("click", event => {
+
+            event.preventDefault();
+
+            const list = [...galleryEl.querySelectorAll(".gallery-item")];
+
+            openLightbox(list.indexOf(item));
+
+          });
+
+        });
+
+    }
+
+    renderGallery("all");
+
+/* Hide any gallery image that fails to load, so a wrong path
+   just leaves an empty tile rather than a broken-image icon. */
+galleryEl.addEventListener(
+  "error",
+  event => {
+    if (event.target.tagName === "IMG") {
+      event.target.classList.add("is-broken");
+    }
+  },
+  true
+);
 
 
     /* =========================================================
@@ -2656,59 +2988,184 @@ section {
        PORTFOLIO FILTERS
     ========================================================= */
 
-    const filters =
+    const filterButtons =
       document.querySelectorAll(".filter");
 
-    const cards =
-      document.querySelectorAll(".work-card");
+    filterButtons.forEach(button => {
 
-    filters.forEach(button => {
+      button.addEventListener("click", () => {
 
-      button.addEventListener(
-        "click",
-        () => {
+        filterButtons.forEach(item => {
 
-          filters.forEach(item => {
+          item.classList.remove("active");
 
-            item.classList.remove(
-              "active"
-            );
+        });
 
-          });
+        button.classList.add("active");
 
-          button.classList.add("active");
+        renderGallery(button.dataset.filter);
 
-          const selected =
-            button.dataset.filter;
+      });
 
-          const visible = [];
+    });
 
-          cards.forEach(card => {
 
-            const shouldHide =
-              selected !== "all" &&
-              card.dataset.category !== selected;
+    /* =========================================================
+       LIGHTBOX
+    ========================================================= */
 
-            card.hidden = shouldHide;
+    const lightbox = document.querySelector("#lightbox");
 
-            if (!shouldHide) visible.push(card);
+    const lightboxImg = document.querySelector("#lightbox-img");
 
-          });
+    const lightboxCounter = document.querySelector("#lightbox-counter");
 
-          visible.forEach((card, i) => {
+    let lightboxIndex = 0;
 
-            card.classList.remove("in", "settled");
+    function currentItems() {
 
-            card.style.setProperty("--d", `${i * 0.1}s`);
+      return [...galleryEl.querySelectorAll(".gallery-item")];
 
-            void card.offsetWidth;
+    }
 
-            reveal(card);
+    function openLightbox(index) {
 
-          });
+      const items = currentItems();
 
-        }
-      );
+      if (!items.length) return;
+
+      lightboxIndex = (index + items.length) % items.length;
+
+      const item = items[lightboxIndex];
+
+      const src = item.dataset.full;
+
+      const alt = item.querySelector("img")?.alt || "";
+
+      if (!src) return;
+
+      lightboxImg.classList.remove("is-loaded");
+
+      lightboxImg.src = src;
+
+      lightboxImg.alt = alt;
+
+      lightboxCounter.textContent =
+        `${lightboxIndex + 1} / ${items.length}`;
+
+      lightbox.classList.add("open");
+
+      lightbox.setAttribute("aria-hidden", "false");
+
+      document.body.classList.add("modal-open");
+
+    }
+
+    function closeLightbox() {
+
+      lightbox.classList.remove("open");
+
+      lightbox.setAttribute("aria-hidden", "true");
+
+      document.body.classList.remove("modal-open");
+
+      lightboxImg.classList.remove("is-loaded");
+
+      lightboxImg.src = "";
+
+    }
+
+    function showNext(step) {
+
+      const items = currentItems();
+
+      if (!items.length) return;
+
+      lightboxIndex =
+        (lightboxIndex + step + items.length) % items.length;
+
+      const item = items[lightboxIndex];
+
+      const src = item.dataset.full;
+
+      const alt = item.querySelector("img")?.alt || "";
+
+      if (!src) return;
+
+      lightboxImg.classList.remove("is-loaded");
+
+      lightboxImg.src = src;
+
+      lightboxImg.alt = alt;
+
+      lightboxCounter.textContent =
+        `${lightboxIndex + 1} / ${items.length}`;
+
+    }
+
+    lightboxImg.addEventListener("load", () => {
+
+      lightboxImg.classList.add("is-loaded");
+
+    });
+
+    lightbox
+      .querySelectorAll("[data-lightbox-close]")
+      .forEach(el => el.addEventListener("click", closeLightbox));
+
+    lightbox
+      .querySelector('[data-nav="prev"]')
+      .addEventListener("click", () => showNext(-1));
+
+    lightbox
+      .querySelector('[data-nav="next"]')
+      .addEventListener("click", () => showNext(1));
+
+    lightbox.addEventListener("click", event => {
+
+      if (
+        event.target === lightbox ||
+        event.target.classList.contains("lightbox__stage")
+      ) {
+        closeLightbox();
+      }
+
+    });
+
+    document.addEventListener("keydown", event => {
+
+      if (!lightbox.classList.contains("open")) return;
+
+      if (event.key === "Escape") closeLightbox();
+
+      else if (event.key === "ArrowLeft") showNext(-1);
+
+      else if (event.key === "ArrowRight") showNext(1);
+
+    });
+
+    let lbTouchStartX = null;
+
+    lightbox.addEventListener(
+      "touchstart",
+      event => {
+        lbTouchStartX = event.touches[0].clientX;
+      },
+      { passive: true }
+    );
+
+    lightbox.addEventListener("touchend", event => {
+
+      if (lbTouchStartX === null) return;
+
+      const distance =
+        event.changedTouches[0].clientX - lbTouchStartX;
+
+      if (Math.abs(distance) > 50) {
+        showNext(distance < 0 ? 1 : -1);
+      }
+
+      lbTouchStartX = null;
 
     });
 
@@ -2833,7 +3290,6 @@ section {
 
       event.preventDefault();
 
-      /* The hidden spam-trap field was filled: it's a bot. */
       if (form.elements._honey.value) return;
 
       statusBox.textContent = "";
@@ -2866,22 +3322,16 @@ section {
               "Content-Type": "application/json",
               "Accept": "application/json"
             },
-            
 
             body: JSON.stringify({
 
-              name:
-                form.elements.name.value.trim(),
+              name: form.elements.name.value.trim(),
 
-              email:
-                form.elements.email.value.trim(),
+              email: form.elements.email.value.trim(),
 
-              message:
-                form.elements.message.value.trim(),
+              message: form.elements.message.value.trim(),
 
-              /* Lets Theophillus reply directly to the visitor. */
-              _replyto:
-                form.elements.email.value.trim(),
+              _replyto: form.elements.email.value.trim(),
 
               _subject:
                 `New photography enquiry from ${form.elements.name.value.trim()}`,
@@ -2900,9 +3350,7 @@ section {
           !response.ok ||
           (result.success !== "true" && result.success !== true)
         ) {
-          throw new Error(
-            result.message || "Request failed"
-          );
+          throw new Error(result.message || "Request failed");
         }
 
         modal.classList.add("sent");
@@ -2911,11 +3359,11 @@ section {
 
       } catch (error) {
 
-  console.error(error);
+        console.error(error);
 
-  statusBox.textContent = "Couldn't send: " + error.message;
+        statusBox.textContent = "Couldn't send: " + error.message;
 
-} finally {
+      } finally {
 
         sendBtn.disabled = false;
 
@@ -2930,58 +3378,36 @@ section {
        MOBILE MENU
     ========================================================= */
 
-    const menu =
-      document.querySelector(".menu");
+    const menu = document.querySelector(".menu");
 
-    const nav =
-      document.querySelector(".nav");
+    const nav = document.querySelector(".nav");
 
-    menu.addEventListener(
-      "click",
-      () => {
+    menu.addEventListener("click", () => {
 
-        const open =
-          nav.classList.toggle("open");
+      const open = nav.classList.toggle("open");
 
-        menu.setAttribute(
-          "aria-expanded",
-          String(open)
-        );
+      menu.setAttribute("aria-expanded", String(open));
 
-        menu.setAttribute(
-          "aria-label",
-          open
-            ? "Close navigation"
-            : "Open navigation"
-        );
+      menu.setAttribute(
+        "aria-label",
+        open ? "Close navigation" : "Open navigation"
+      );
 
-      }
-    );
+    });
 
     nav
       .querySelectorAll("a")
       .forEach(link => {
 
-        link.addEventListener(
-          "click",
-          () => {
+        link.addEventListener("click", () => {
 
-            nav.classList.remove(
-              "open"
-            );
+          nav.classList.remove("open");
 
-            menu.setAttribute(
-              "aria-expanded",
-              "false"
-            );
+          menu.setAttribute("aria-expanded", "false");
 
-            menu.setAttribute(
-              "aria-label",
-              "Open navigation"
-            );
+          menu.setAttribute("aria-label", "Open navigation");
 
-          }
-        );
+        });
 
       });
 
