@@ -1630,23 +1630,30 @@
          screen width so the gallery feels as grand as desktop. */
 
       .gallery {
-        grid-template-columns: 1fr;
-        gap: 14px;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: calc(100% + 48px); /* Pulls the grid out to the edges of the screen */
+        margin-left: -24px;       /* Offsets the parent .wrap padding */
+        margin-right: -24px;
       }
 
       .gallery-item {
-        aspect-ratio: 4 / 5;
+        aspect-ratio: 3 / 4; /* Slightly taller tiles like the reference */
+        border-radius: 0;
       }
 
       .gallery-item__overlay {
-        font-size: 0.58rem;
-        letter-spacing: 0.16em;
-        padding: 12px;
+        font-size: 0.55rem;
+        letter-spacing: 0.12em;
+        padding: 8px;
       }
 
       .gallery-item__overlay span {
-        padding: 10px 14px;
-        gap: 8px;
+        padding: 8px 10px;
+        gap: 6px;
+        backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.4);
       }
 
       .gallery-item__overlay svg {
@@ -2416,6 +2423,18 @@
           >
         </div>
 
+        <div class="field">
+          <label for="cf-time">Preferred Time (10:00 AM - 5:00 PM)</label>
+          <input
+            id="cf-time"
+            name="time"
+            type="time"
+            min="10:00"
+            max="17:00"
+            required
+          >
+        </div>
+
 
         <div class="field">
           <label for="cf-message">Your message</label>
@@ -2581,21 +2600,21 @@
         "/images/PORTRAITS/portrait3.jpg",
         "/images/PORTRAITS/portrait4.jpg",
         "/images/PORTRAITS/portrait5.jpg",
-        "/images/PORTRAITS/portrait6.jpg",
+        "/images/PORTRAITS/portrait6.JPG",
         "/images/PORTRAITS/portrait7.jpg",
-        "/images/PORTRAITS/portrait8.jpg",
-        "/images/PORTRAITS/portrait9.jpg",
-        "/images/PORTRAITS/portrait10.jpg",
-        "/images/PORTRAITS/portrait11.jpg",
+        "/images/PORTRAITS/portrait8.JPG",
+        "/images/PORTRAITS/portrait9.JPG",
+        "/images/PORTRAITS/portrait10.JPG",
+        "/images/PORTRAITS/portrait11.JPG",
         "/images/PORTRAITS/portrait12.jpg",
-        "/images/PORTRAITS/portrait13.jpg"
+        "/images/PORTRAITS/portrait13.JPG"
       ],
 
       product: [
-        "/images/PRODUCTS/product1.jpg",
+        "/images/PRODUCTS/product1.JPG",
         "/images/PRODUCTS/product2.jpg",
         "/images/PRODUCTS/product3.jpg",
-        "/images/PRODUCTS/product4.jpg",
+        "/images/PRODUCTS/product4.JPG",
         "/images/PRODUCTS/product5.jpg",
         "/images/PRODUCTS/product6.jpg",
         "/images/PRODUCTS/product7.jpg"
@@ -2939,9 +2958,18 @@
 
       if (selected === "all") {
 
+        // For "All Work", pick exactly 3 random images from each category
         ALL_WORK_ORDER.forEach(category => {
 
-          (GALLERY[category] || []).forEach(src => {
+          const categoryImages = GALLERY[category] || [];
+
+          // Shuffle this specific category's images
+          const shuffled = [...categoryImages].sort(() => 0.5 - Math.random());
+
+          // Take only the first 3 from this category
+          const selectedThree = shuffled.slice(0, 3);
+
+          selectedThree.forEach(src => {
 
             items.push({ category, src });
 
@@ -3385,6 +3413,18 @@
       dateInput.min = `${yyyy}-${mm}-${dd}`;
     }
 
+    /* Strictly enforce the 10:00 AM to 5:00 PM booking window */
+    const timeInput = document.querySelector("#cf-time");
+    if (timeInput) {
+      timeInput.addEventListener("input", function() {
+        // If the user manually types a time outside the range, clear it
+        if (this.value && (this.value < "10:00" || this.value > "17:00")) {
+          alert("Please select a time between 10:00 AM and 5:00 PM.");
+          this.value = ""; // Clear the invalid time
+        }
+      });
+    }
+
     form.addEventListener("submit", async event => {
 
       event.preventDefault();
@@ -3429,6 +3469,8 @@
               email: form.elements.email.value.trim(),
 
               date: form.elements.date.value,
+
+              time: form.elements.time.value,
 
               message: form.elements.message.value.trim(),
 
