@@ -2157,7 +2157,7 @@
               type="button"
               data-filter="fashion"
             >
-              Concert
+              Event
             </button>
 
             <button
@@ -2407,6 +2407,17 @@
         </div>
 
         <div class="field">
+          <label for="cf-date">Preferred Date</label>
+          <input
+            id="cf-date"
+            name="date"
+            type="date"
+            required
+          >
+        </div>
+
+
+        <div class="field">
           <label for="cf-message">Your message</label>
           <textarea
             id="cf-message"
@@ -2560,42 +2571,41 @@
         "/images/EDITORIALS/editorial14.jpeg",
       ],
 
-      concert: [
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=1200&q=85"
-      ],
+      // event: [
+        
+      // ],
 
       portrait: [
-        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=1200&q=85"
+        "/images/PORTRAITS/portrait1.jpg",
+        "/images/PORTRAITS/portrait2.jpg",
+        "/images/PORTRAITS/portrait3.jpg",
+        "/images/PORTRAITS/portrait4.jpg",
+        "/images/PORTRAITS/portrait5.jpg",
+        "/images/PORTRAITS/portrait6.jpg",
+        "/images/PORTRAITS/portrait7.jpg",
+        "/images/PORTRAITS/portrait8.jpg",
+        "/images/PORTRAITS/portrait9.jpg",
+        "/images/PORTRAITS/portrait10.jpg",
+        "/images/PORTRAITS/portrait11.jpg",
+        "/images/PORTRAITS/portrait12.jpg",
+        "/images/PORTRAITS/portrait13.jpg"
       ],
 
       product: [
-        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=85"
+        "/images/PRODUCTS/product1.jpg",
+        "/images/PRODUCTS/product2.jpg",
+        "/images/PRODUCTS/product3.jpg",
+        "/images/PRODUCTS/product4.jpg",
+        "/images/PRODUCTS/product5.jpg",
+        "/images/PRODUCTS/product6.jpg",
+        "/images/PRODUCTS/product7.jpg"
       ],
 
       fashion: [
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1200&q=85"
+        "/images/EVENTS/event1.jpg",
+        "/images/EVENTS/event2.jpg",
+        "/images/EVENTS/event3.jpg",
+        "/images/EVENTS/event4.jpg"
       ]
 
     };
@@ -2609,7 +2619,7 @@
     const ALL_WORK_ORDER = [
       "editorial",
       "fashion",
-      "concert",
+      "event",
       "portrait",
       "product"
     ];
@@ -3365,6 +3375,16 @@
        CONTACT FORM SUBMISSION
     ========================================================= */
 
+      /* Set the minimum allowed date to today (prevents booking yesterday) */
+    const dateInput = document.querySelector("#cf-date");
+    if (dateInput) {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+    }
+
     form.addEventListener("submit", async event => {
 
       event.preventDefault();
@@ -3407,6 +3427,8 @@
               name: form.elements.name.value.trim(),
 
               email: form.elements.email.value.trim(),
+
+              date: form.elements.date.value,
 
               message: form.elements.message.value.trim(),
 
