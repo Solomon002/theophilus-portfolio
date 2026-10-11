@@ -47,7 +47,7 @@ const GALLERY = {
     "/images/PRODUCTS/product6.jpg",
     "/images/PRODUCTS/product7.jpg"
   ],
-  fashion: [
+  event: [
     "/images/EVENTS/event1.jpg",
     "/images/EVENTS/event2.jpg",
     "/images/EVENTS/event3.jpg",
