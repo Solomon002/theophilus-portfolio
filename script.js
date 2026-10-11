@@ -29,20 +29,20 @@ const GALLERY = {
     "/images/PORTRAITS/portrait3.jpg",
     "/images/PORTRAITS/portrait4.jpg",
     "/images/PORTRAITS/portrait5.jpg",
-    "/images/PORTRAITS/portrait6.jpg",
+    "/images/PORTRAITS/portrait6.JPG",
     "/images/PORTRAITS/portrait7.jpg",
     "/images/PORTRAITS/portrait8.jpg",
     "/images/PORTRAITS/portrait9.jpg",
-    "/images/PORTRAITS/portrait10.jpg",
-    "/images/PORTRAITS/portrait11.jpg",
-    "/images/PORTRAITS/portrait12.jpg",
-    "/images/PORTRAITS/portrait13.jpg"
+    "/images/PORTRAITS/portrait10.JPG",
+    "/images/PORTRAITS/portrait11.JPG",
+    "/images/PORTRAITS/portrait12.JPG",
+    "/images/PORTRAITS/portrait13.JPG"
   ],
   product: [
-    "/images/PRODUCTS/product1.jpg",
+    "/images/PRODUCTS/product1.JPG",
     "/images/PRODUCTS/product2.jpg",
     "/images/PRODUCTS/product3.jpg",
-    "/images/PRODUCTS/product4.jpg",
+    "/images/PRODUCTS/product4.JPG",
     "/images/PRODUCTS/product5.jpg",
     "/images/PRODUCTS/product6.jpg",
     "/images/PRODUCTS/product7.jpg"
