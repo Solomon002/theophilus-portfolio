@@ -33,13 +33,13 @@ const GALLERY = {
     "/images/PORTRAITS/portrait5.jpg",
     "/images/PORTRAITS/portrait6.JPG",
     "/images/PORTRAITS/portrait7.jpg",
-    "/images/PORTRAITS/portrait8.jpg",
-    "/images/PORTRAITS/portrait9.jpg",
+    "/images/PORTRAITS/portrait8.JPG",
+    "/images/PORTRAITS/portrait9.JPG",
     "/images/PORTRAITS/portrait10.JPG",
     "/images/PORTRAITS/portrait11.JPG",
-    "/images/PORTRAITS/portrait12.JPG",
+    "/images/PORTRAITS/portrait12.jpg",
     "/images/PORTRAITS/portrait13.JPG",
-    "/images/PORTRAITS/portrait14.JPG"
+    "/images/PORTRAITS/portrait14.jpeg"
   ],
   product: [
     "/images/PRODUCTS/product1.JPG",
