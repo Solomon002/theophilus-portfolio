@@ -22,6 +22,8 @@ const GALLERY = {
     "/images/EDITORIALS/editorial12.jpeg",
     "/images/EDITORIALS/editorial13.jpeg",
     "/images/EDITORIALS/editorial14.jpeg",
+    "/images/EDITORIALS/editorial15.jpeg",
+    "/images/EDITORIALS/editorial16.jpeg"
   ],
   portrait: [
     "/images/PORTRAITS/portrait1.jpg",
@@ -36,7 +38,8 @@ const GALLERY = {
     "/images/PORTRAITS/portrait10.JPG",
     "/images/PORTRAITS/portrait11.JPG",
     "/images/PORTRAITS/portrait12.JPG",
-    "/images/PORTRAITS/portrait13.JPG"
+    "/images/PORTRAITS/portrait13.JPG",
+    "/images/PORTRAITS/portrait14.JPG"
   ],
   product: [
     "/images/PRODUCTS/product1.JPG",
